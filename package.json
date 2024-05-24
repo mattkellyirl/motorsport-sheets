@@ -1,0 +1,36 @@
+{
+  "name": "motorsport-sheets",
+  "version": "1.0.0",
+  "description": "Motorsport Sheets is a comprehensive application designed for race engineers, mechanics, and drivers to create and manage motorsport data for racing cars.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "seed": "npm run seed --prefix server",
+    "install": "cd server && npm i && cd ../client && npm i --production=false",
+    "build": "npm run build --prefix client",
+    "install-client": "npm install --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattkellyirl/motorsport-sheets"
+  },
+  "keywords": [],
+  "author": "Matt Kelly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattkellyirl/motorsport-sheets/issues"
+  },
+  "homepage": "https://github.com/mattkellyirl/motorsport-sheets",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

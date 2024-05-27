@@ -11,7 +11,7 @@ function Home() {
       <Navbar />
       <Hero />
       <Solution />
-      <Solution2 />
+      {/* <Solution2 /> */}
       <Footer />
     </div>
   );

@@ -14,7 +14,7 @@ function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase">
+              <h2 className="mb-4 text-sm font-semibold black uppercase">
                 Resources
               </h2>
               <ul className="text-gray-400 font-medium">
@@ -31,7 +31,7 @@ function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="mb-4 text-sm font-semibold text-gray-900 uppercase">
+              <h2 className="mb-4 text-sm font-semibold black uppercase">
                 Legal
               </h2>
               <ul className="text-gray-400 font-medium">

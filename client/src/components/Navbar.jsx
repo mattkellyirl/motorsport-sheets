@@ -24,7 +24,7 @@ function Navbar() {
                   duration={500}
                   spy={true}
                   activeClass="active"
-                  className="block px-3 py-2 text-base text-black border border-transparent hover:border-black hover:rounded-lg cursor-pointer"
+                  className="block px-3 py-2 text-base text-gray-400 hover:text-black border border-transparent cursor-pointer"
                 >
                   Home
                 </ScrollLink>
@@ -36,7 +36,7 @@ function Navbar() {
                   duration={500}
                   spy={true}
                   activeClass="active"
-                  className="block px-3 py-2 text-base text-black border border-transparent hover:border-black hover:rounded-lg cursor-pointer"
+                  className="block px-3 py-2 text-base text-gray-400 hover:text-black border border-transparent cursor-pointer"
                 >
                   Solutions
                 </ScrollLink>
@@ -48,14 +48,14 @@ function Navbar() {
                   duration={500}
                   spy={true}
                   activeClass="active"
-                  className="block px-3 py-2 text-base text-black border border-transparent hover:border-black hover:rounded-lg cursor-pointer"
+                  className="block px-3 py-2 text-base text-gray-400 hover:text-black border border-transparent cursor-pointer"
                 >
                   Contact
                 </ScrollLink>
               </li>
               <li className="mb-2 md:mb-0">
                 <Link to="/login">
-                  <div className="block px-3 py-2 text-base text-black border border-transparent hover:border-black hover:rounded-lg cursor-pointer">
+                  <div className="block px-3 py-2 text-base text-gray-400 hover:text-black border border-transparent rounded-lg cursor-pointer">
                     Login
                   </div>
                 </Link>

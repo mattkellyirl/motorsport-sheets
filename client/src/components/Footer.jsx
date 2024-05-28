@@ -50,9 +50,9 @@ function Footer() {
             </div>
           </div>
         </div>
-        <hr className="my-8 sm:mx-auto border-gray-900" />
+        <hr className="my-8 sm:mx-auto border-gray-400" />
         <div className="sm:flex sm:items-center sm:justify-between text-center">
-          <span className="text-sm text-gray-400">
+          <span className="text-sm font-light text-gray-400">
             © 2023{" "}
             <Link to="/" className="hover:underline">
               Motorsport Sheets.

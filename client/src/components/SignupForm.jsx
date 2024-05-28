@@ -53,7 +53,7 @@ function SignupForm() {
               >
                 Signup
               </button>
-              <p className="text-sm font-light text-gray-500">
+              <p className="text-sm font-light text-gray-400">
                 Already have an account?{" "}
                 <Link
                   to="/login"

@@ -53,7 +53,7 @@ function LoginForm() {
               >
                 Login
               </button>
-              <p className="text-sm font-light text-gray-500">
+              <p className="text-sm font-light text-gray-400">
                 Don't have an account?{" "}
                 <Link
                   to="/signup"

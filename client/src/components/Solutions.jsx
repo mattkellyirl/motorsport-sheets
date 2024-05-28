@@ -4,7 +4,7 @@ import vehicleSetupImg from "/vehicle-setup.png";
 
 function Solutions() {
   return (
-    <section className="relative w-full h-auto lg:h-screen flex flex-col justify-center bg-gray-100">
+    <section className="relative w-full h-auto lg:h-screen flex flex-col justify-center bg-white">
       <div className="p-8 px-4 mx-auto max-w-screen-xl grid lg:grid-cols-2">
         <div className="flex flex-col justify-center">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl">

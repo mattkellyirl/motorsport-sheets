@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
+import { Link } from "react-router-dom";
 import logo from "/motorsport-sheets.png";
 
 function Navbar() {
@@ -7,10 +8,11 @@ function Navbar() {
     <nav className="static md:fixed md:top-0 md:left-0 md:w-full md:z-50 bg-white md:bg-opacity-90">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-center md:justify-between mx-auto px-4 py-4">
         {/* Logo */}
-        <div className="flex items-center space-x-8 rtl:space-x-reverse">
-          <img src={logo} alt="Motorsport Sheets" className="h-12" />
-        </div>
-
+        <Link to="/">
+          <div className="flex items-center space-x-8 rtl:space-x-reverse">
+            <img src={logo} alt="Motorsport Sheets" className="h-12" />
+          </div>
+        </Link>
         {/* Navigation Links */}
         <div className="w-full text-center md:block md:text-start md:w-auto">
           <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
@@ -52,15 +54,19 @@ function Navbar() {
                 </ScrollLink>
               </li>
               <li className="mb-2 md:mb-0">
-                <div className="block px-3 py-2 text-base text-black border border-transparent hover:border-gray-900 hover:rounded-lg cursor-pointer">
-                  Login
-                </div>
+                <Link to="/login">
+                  <div className="block px-3 py-2 text-base text-black border border-transparent hover:border-gray-900 hover:rounded-lg cursor-pointer">
+                    Login
+                  </div>
+                </Link>
               </li>
 
               <li className="mb-2 md:mb-0">
-                <div className="text-base text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 rounded-lg px-3 py-2 text-center cursor-pointer">
-                  Signup
-                </div>
+                <Link to="/signup">
+                  <div className="text-base text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 rounded-lg px-3 py-2 text-center cursor-pointer">
+                    Signup
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>

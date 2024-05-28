@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "/motorsport-sheets.png";
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
@@ -8,30 +9,30 @@ function Footer() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-8 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-8 md:mb-0">
-            <a href="#" className="flex justify-center items-center">
+            <Link to="/" className="flex justify-center items-center">
               <img src={logo} className="h-10" alt="Motorsport Sheets Logo" />
-            </a>
+            </Link>
           </div>
           <div className="grid grid-cols-2 gap-8">
             <div>
-              <h2 className="mb-4 text-sm font-semibold black uppercase">
+              <h2 className="mb-4 text-sm font-semibold text-black uppercase">
                 Resources
               </h2>
               <ul className="text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="#" className="hover:underline">
+                  <Link to="/signup" className="hover:underline">
                     Signup
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link to="/login" className="hover:underline">
                     Login
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 className="mb-4 text-sm font-semibold black uppercase">
+              <h2 className="mb-4 text-sm font-semibold text-black uppercase">
                 Legal
               </h2>
               <ul className="text-gray-400 font-medium">
@@ -53,9 +54,9 @@ function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between text-center">
           <span className="text-sm text-gray-400">
             © 2023{" "}
-            <a href="#" className="hover:underline">
+            <Link to="/" className="hover:underline">
               Motorsport Sheets.
-            </a>{" "}
+            </Link>{" "}
             All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-8 sm:space-x-4 justify-center sm:mt-0">

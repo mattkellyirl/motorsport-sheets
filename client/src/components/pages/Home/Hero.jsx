@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import hero from "/hero.jpg";
+import heroImg from "/hero.jpg";
 
 function Hero() {
   return (
     <section className="relative w-full h-screen">
       <img
-        src={hero}
+        src={heroImg}
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover z-[-1]"
       />

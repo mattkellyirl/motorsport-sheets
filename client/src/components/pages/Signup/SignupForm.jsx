@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "/motorsport-sheets.png";
 
-function LoginForm() {
+function SignupForm() {
   return (
     <section className="bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
@@ -12,7 +12,7 @@ function LoginForm() {
         <div className="w-full bg-white rounded-lg shadow max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-black md:text-2xl">
-              Login
+              Signup
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
               <div>
@@ -51,15 +51,15 @@ function LoginForm() {
                 type="submit"
                 className="w-full px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300"
               >
-                Login
+                Signup
               </button>
               <p className="text-sm font-light text-gray-400">
-                Don't have an account?{" "}
+                Already have an account?{" "}
                 <Link
-                  to="/signup"
-                  className="font-medium text-gray-600 hover:underline"
+                  to="/login"
+                  className="font-medium text-black hover:underline"
                 >
-                  Signup here
+                  Login here
                 </Link>
               </p>
             </form>
@@ -70,4 +70,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default SignupForm;

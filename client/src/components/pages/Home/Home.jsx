@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../Navbar";
-import Hero from "../Hero";
-import Solutions from "../Solutions";
-import Contact from "../Contact";
-import Footer from "../Footer";
+import Navbar from "../../Navbar";
+import Hero from "./Hero";
+import Solutions from "./Solutions";
+import Contact from "./Contact";
+import Footer from "../../Footer";
 
 function Home() {
   return (

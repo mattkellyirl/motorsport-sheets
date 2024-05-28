@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 .active {
-  border: 1px solid #1f2937;
+  border: 1px solid black;
   border-radius: 0.5rem;
 }

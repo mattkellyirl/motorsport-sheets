@@ -27,7 +27,7 @@ function Navbar() {
               </li>
               <li className="mb-2 md:mb-0">
                 <ScrollLink
-                  to="work"
+                  to="solutions"
                   smooth="easeInOutQuad"
                   duration={500}
                   className="block px-3 py-2 text-base text-black border border-transparent hover:border-gray-900 hover:rounded-lg cursor-pointer"

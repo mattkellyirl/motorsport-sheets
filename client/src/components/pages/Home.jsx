@@ -2,16 +2,18 @@ import React from "react";
 import Navbar from "../Navbar";
 import Hero from "../Hero";
 import Footer from "../Footer";
-import Solution from "../Solution";
-import Solution2 from "../Solution2";
+import Solutions from "../Solutions";
 
 function Home() {
   return (
     <div>
       <Navbar />
-      <Hero />
-      <Solution />
-      {/* <Solution2 /> */}
+      <section id="home">
+        <Hero />
+      </section>
+      <section id="solutions">
+        <Solutions />
+      </section>
       <Footer />
     </div>
   );

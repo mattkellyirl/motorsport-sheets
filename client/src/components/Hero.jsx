@@ -1,5 +1,5 @@
 import React from "react";
-import hero from "/hero.jpg"; // Ensure this path is correct
+import hero from "/hero.jpg";
 
 function Hero() {
   return (

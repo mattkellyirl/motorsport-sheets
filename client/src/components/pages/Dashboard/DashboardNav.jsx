@@ -49,7 +49,7 @@ function DashboardNav() {
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <MdSpaceDashboard className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="ms-3">Dashboard</span>
+                <span className="ms-3 font-semibold">Dashboard</span>
               </a>
             </li>
             <li>
@@ -58,7 +58,7 @@ function DashboardNav() {
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="flex-1 ms-3 whitespace-nowrap">
+                <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
                   Your Sheets
                 </span>
               </a>
@@ -68,8 +68,10 @@ function DashboardNav() {
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
-                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="flex-1 ms-3 whitespace-nowrap">Your Cars</span>
+                <MdEventNote className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
+                  Your Events
+                </span>
               </a>
             </li>
             <li>
@@ -77,9 +79,9 @@ function DashboardNav() {
                 href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
-                <MdEventNote className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Your Events
+                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
+                  Your Cars
                 </span>
               </a>
             </li>

@@ -20,6 +20,8 @@ function Navbar() {
                   to="home"
                   smooth="easeInOutQuad"
                   duration={500}
+                  spy={true}
+                  activeClass="active"
                   className="block px-3 py-2 text-base text-black border border-transparent hover:border-gray-900 hover:rounded-lg cursor-pointer"
                 >
                   Home
@@ -30,6 +32,8 @@ function Navbar() {
                   to="solutions"
                   smooth="easeInOutQuad"
                   duration={500}
+                  spy={true}
+                  activeClass="active"
                   className="block px-3 py-2 text-base text-black border border-transparent hover:border-gray-900 hover:rounded-lg cursor-pointer"
                 >
                   Solutions
@@ -40,6 +44,8 @@ function Navbar() {
                   to="contact"
                   smooth="easeInOutQuad"
                   duration={500}
+                  spy={true}
+                  activeClass="active"
                   className="block px-3 py-2 text-base text-black border border-transparent hover:border-gray-900 hover:rounded-lg cursor-pointer"
                 >
                   Contact

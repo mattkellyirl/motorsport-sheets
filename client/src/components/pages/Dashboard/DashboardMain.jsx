@@ -19,7 +19,7 @@ function DashboardMain() {
               class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
             >
               <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                Setup Sheet #1
+                PCCA-1-992-QUA-HJ
               </h5>
               <p class="font-normal text-black">
                 <span className="font-bold">Car:</span> Porsche 992 GT3 Cup

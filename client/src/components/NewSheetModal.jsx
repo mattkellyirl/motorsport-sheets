@@ -39,7 +39,7 @@ function NewSheetModal({ isOpen, onClose }) {
             </button>
           </div>
           <form className="p-4 md:p-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div className="">
                 <div className="mb-4">
                   <label
@@ -301,8 +301,10 @@ function NewSheetModal({ isOpen, onClose }) {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Camber Input Container */}
+              <div className="">
+                {/* Tyre Pressure Input Container */}
                 <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
                     Camber
@@ -378,6 +380,88 @@ function NewSheetModal({ isOpen, onClose }) {
                           id="right-rear"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
+                          required
+                          min="0"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Toe Input Container */}
+                <div className="">
+                  <h4 className="text-md font-semibold text-black mb-2">Toe</h4>
+                  <div className="pt-4 border-t">
+                    <div className="flex mb-4 gap-4">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="left-front"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Left Front
+                        </label>
+                        <input
+                          type="number"
+                          name="left-front"
+                          id="left-front"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter toe setting"
+                          required
+                          min="0"
+                        />
+                      </div>
+
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="right-front"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Right Front
+                        </label>
+                        <input
+                          type="number"
+                          name="right-front"
+                          id="right-front"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter toe setting"
+                          required
+                          min="0"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex mb-8 gap-4">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="left-rear"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Left Rear
+                        </label>
+                        <input
+                          type="number"
+                          name="left-rear"
+                          id="left-rear"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter toe setting"
+                          required
+                          min="0"
+                        />
+                      </div>
+
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="right-rear"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Right Rear
+                        </label>
+                        <input
+                          type="number"
+                          name="right-rear"
+                          id="right-rear"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter toe setting"
                           required
                           min="0"
                         />

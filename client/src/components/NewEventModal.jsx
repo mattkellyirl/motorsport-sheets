@@ -61,8 +61,8 @@ function NewEventModal({ isOpen, onClose }) {
                   <option value="" disabled selected hidden>
                     Please select...
                   </option>
-                  <option value="Race Event">Race Event</option>
                   <option value="Test Event">Test Event</option>
+                  <option value="Race Event">Race Event</option>
                 </select>
               </div>
 

@@ -1,4 +1,3 @@
-// components/pages/dashboard/DashboardCars.jsx
 import React, { useState } from "react";
 import NewEventModal from "../../NewEventModal";
 

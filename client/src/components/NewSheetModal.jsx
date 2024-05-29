@@ -86,6 +86,36 @@ function NewSheetModal({ isOpen, onClose }) {
 
               <div className="col-span-2">
                 <label
+                  htmlFor="session"
+                  className="block mb-2 text-sm font-semibold text-black"
+                >
+                  Session
+                </label>
+                <select
+                  name="session"
+                  id="session"
+                  className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                  required
+                >
+                  <option value="" disabled selected hidden>
+                    Please select...
+                  </option>
+                  <option value="Practice 1">Practice 1</option>
+                  <option value="Practice 2">Practice 2</option>
+                  <option value="Practice 3">Practice 3</option>
+                  <option value="Practice 4">Practice 4</option>
+                  <option value="Practice 5">Practice 5</option>
+                  <option value="Qualifying">Qualifying</option>
+                  <option value="Race 1">Race 1</option>
+                  <option value="Race 2">Race 2</option>
+                  <option value="Race 3">Race 3</option>
+                  <option value="Race 4">Race 4</option>
+                  <option value="Race 5">Race 5</option>
+                </select>
+              </div>
+
+              <div className="col-span-2">
+                <label
                   htmlFor="driver"
                   className="block mb-2 text-sm font-semibold text-black"
                 >

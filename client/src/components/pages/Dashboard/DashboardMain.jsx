@@ -19,17 +19,20 @@ function DashboardMain() {
               class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
             >
               <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                Porsche 992 GT3 Cup
+                Setup Sheet #1
               </h5>
               <p class="font-normal text-black">
-                <span className="font-bold">Track:</span> The Bend Motorsport
-                Park
+                <span className="font-bold">Car:</span> Porsche 992 GT3 Cup
               </p>
               <p class="font-normal text-black">
-                <span className="font-bold">Session:</span> Practice #1
+                <span className="font-bold">Event:</span> Porsche Carrera Cup
+                Australia, Round 1
               </p>
               <p class="font-normal text-black">
-                <span className="font-bold">Driver:</span> #12, Harri Jones
+                <span className="font-bold">Session:</span> Qualifying
+              </p>
+              <p class="font-normal text-black">
+                <span className="font-bold">Driver:</span> Harri Jones
               </p>
             </a>
           </div>
@@ -59,7 +62,7 @@ function DashboardMain() {
                 <span className="font-bold">Odometer:</span> 6,628km
               </p>
               <p class="font-normal text-black">
-                <span className="font-bold">Driver:</span> #12, Harri Jones
+                <span className="font-bold">Race Number:</span> #12
               </p>
             </a>
           </div>
@@ -80,17 +83,17 @@ function DashboardMain() {
               class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
             >
               <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                Round 1, Porsche Carrera Cup Australia
+                Porsche Carrera Cup Australia, Round 1
               </h5>
               <p class="font-normal text-black">
-                <span className="font-bold">Date:</span> 01/01/2024
+                <span className="font-bold">Type:</span> Race Event
               </p>
               <p class="font-normal text-black">
                 <span className="font-bold">Track:</span> The Bend Motorsport
                 Park
               </p>
               <p class="font-normal text-black">
-                <span className="font-bold">Driver:</span> #12, Harri Jones
+                <span className="font-bold">Date:</span> 01/01/2024
               </p>
             </a>
           </div>

@@ -36,10 +36,10 @@ function DashboardCars() {
                 <span className="font-bold">Year:</span> 2021
               </p>
               <p className="font-normal text-black">
-                <span className="font-bold">Odometer:</span> 6,628km
+                <span className="font-bold">Race Number:</span> #12
               </p>
               <p className="font-normal text-black">
-                <span className="font-bold">Race Number:</span> #12
+                <span className="font-bold">Odometer:</span> 6,628km
               </p>
             </a>
           </div>

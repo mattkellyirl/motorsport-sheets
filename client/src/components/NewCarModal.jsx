@@ -78,6 +78,23 @@ function NewCarModal({ isOpen, onClose }) {
 
               <div className="col-span-2">
                 <label
+                  htmlFor="model"
+                  className="block mb-2 text-sm font-semibold text-black"
+                >
+                  Year
+                </label>
+                <input
+                  type="number"
+                  name="year"
+                  id="year"
+                  className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  placeholder="Enter vehicle year"
+                  required=""
+                />
+              </div>
+
+              <div className="col-span-2">
+                <label
                   htmlFor="number"
                   className="block mb-2 text-sm font-semibold text-black"
                 >

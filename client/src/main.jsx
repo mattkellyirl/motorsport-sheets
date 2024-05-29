@@ -8,6 +8,8 @@ import Login from "./components/pages/Login/Login";
 import Signup from "./components/pages/Signup/Signup";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import DashboardMain from "./components/pages/Dashboard/DashboardMain";
+// import DashboardSheets from "./components/pages/Dashboard/DashboardSheets";
+import DashboardEvents from "./components/pages/Dashboard/DashboardEvents";
 import DashboardCars from "./components/pages/Dashboard/DashboardCars";
 
 import "./index.css";
@@ -36,6 +38,14 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <DashboardMain />,
+          },
+          // {
+          //   path: "sheets",
+          //   element: <DashboardSheets />,
+          // },
+          {
+            path: "events",
+            element: <DashboardEvents />,
           },
           {
             path: "cars",

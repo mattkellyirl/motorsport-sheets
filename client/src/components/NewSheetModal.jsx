@@ -137,21 +137,21 @@ function NewSheetModal({ isOpen, onClose }) {
                 {/* Tyre Pressure Input Container */}
                 <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Tyre Pressure
+                    Tyre Pressure (psi)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front"
+                          htmlFor="left-front-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front"
-                          id="left-front"
+                          name="left-front-pressure"
+                          id="left-front-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -161,15 +161,15 @@ function NewSheetModal({ isOpen, onClose }) {
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front"
+                          htmlFor="right-front-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front"
-                          id="right-front"
+                          name="right-front-pressure"
+                          id="right-front-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -181,15 +181,15 @@ function NewSheetModal({ isOpen, onClose }) {
                     <div className="flex mb-8 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear"
+                          htmlFor="left-rear-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear"
-                          id="left-rear"
+                          name="left-rear-pressure"
+                          id="left-rear-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -199,15 +199,15 @@ function NewSheetModal({ isOpen, onClose }) {
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear"
+                          htmlFor="right-rear-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear"
-                          id="right-rear"
+                          name="right-rear-pressure"
+                          id="right-rear-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -221,21 +221,21 @@ function NewSheetModal({ isOpen, onClose }) {
                 {/* Ride Height Input Container */}
                 <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Ride Height
+                    Ride Height (mm)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front"
+                          htmlFor="left-front-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front"
-                          id="left-front"
+                          name="left-front-height"
+                          id="left-front-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -245,15 +245,15 @@ function NewSheetModal({ isOpen, onClose }) {
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front"
+                          htmlFor="right-front-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front"
-                          id="right-front"
+                          name="right-front-height"
+                          id="right-front-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -265,15 +265,15 @@ function NewSheetModal({ isOpen, onClose }) {
                     <div className="flex mb-8 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear"
+                          htmlFor="left-rear-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear"
-                          id="left-rear"
+                          name="left-rear-height"
+                          id="left-rear-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -283,15 +283,15 @@ function NewSheetModal({ isOpen, onClose }) {
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear"
+                          htmlFor="right-rear-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear"
-                          id="right-rear"
+                          name="right-rear-height"
+                          id="right-rear-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -304,46 +304,44 @@ function NewSheetModal({ isOpen, onClose }) {
               </div>
 
               <div className="">
-                {/* Tyre Pressure Input Container */}
+                {/* Camber Input Container */}
                 <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Camber
+                    Camber (degrees)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front"
+                          htmlFor="left-front-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front"
-                          id="left-front"
+                          name="left-front-camber"
+                          id="left-front-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front"
+                          htmlFor="right-front-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front"
-                          id="right-front"
+                          name="right-front-camber"
+                          id="right-front-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>
@@ -351,37 +349,35 @@ function NewSheetModal({ isOpen, onClose }) {
                     <div className="flex mb-8 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear"
+                          htmlFor="left-rear-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear"
-                          id="left-rear"
+                          name="left-rear-camber"
+                          id="left-rear-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear"
+                          htmlFor="right-rear-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear"
-                          id="right-rear"
+                          name="right-rear-camber"
+                          id="right-rear-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>
@@ -390,42 +386,42 @@ function NewSheetModal({ isOpen, onClose }) {
 
                 {/* Toe Input Container */}
                 <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">Toe</h4>
+                  <h4 className="text-md font-semibold text-black mb-2">
+                    Toe (mm)
+                  </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front"
+                          htmlFor="left-front-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front"
-                          id="left-front"
+                          name="left-front-toe"
+                          id="left-front-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front"
+                          htmlFor="right-front-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front"
-                          id="right-front"
+                          name="right-front-toe"
+                          id="right-front-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>
@@ -433,37 +429,35 @@ function NewSheetModal({ isOpen, onClose }) {
                     <div className="flex mb-8 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear"
+                          htmlFor="left-rear-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear"
-                          id="left-rear"
+                          name="left-rear-toe"
+                          id="left-rear-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear"
+                          htmlFor="right-rear-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear"
-                          id="right-rear"
+                          name="right-rear-toe"
+                          id="right-rear-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>

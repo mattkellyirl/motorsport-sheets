@@ -44,46 +44,46 @@ function DashboardNav() {
 
           <ul className="space-y-2 font-medium">
             <li>
-              <a
-                href="#"
+              <Link
+                to="/dashboard"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <MdSpaceDashboard className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                 <span className="ms-3 font-semibold">Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/dashboard/sheets"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                 <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
                   Your Sheets
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/dashboard/events"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <MdEventNote className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                 <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
                   Your Events
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/dashboard/cars"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
                 <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                 <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
                   Your Cars
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

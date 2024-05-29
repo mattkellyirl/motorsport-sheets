@@ -1,14 +1,12 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import DashboardNav from "./DashboardNav";
-import DashboardMain from "./DashboardMain";
-import DashboardCars from "./DashboardCars";
 
 function Dashboard() {
   return (
     <div>
       <DashboardNav />
-      {/* <DashboardMain /> */}
-      <DashboardCars />
+      <Outlet />
     </div>
   );
 }

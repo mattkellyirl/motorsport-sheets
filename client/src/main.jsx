@@ -1,3 +1,4 @@
+// main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,6 +7,8 @@ import Home from "./components/pages/Home/Home";
 import Login from "./components/pages/Login/Login";
 import Signup from "./components/pages/Signup/Signup";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
+import DashboardMain from "./components/pages/Dashboard/DashboardMain";
+import DashboardCars from "./components/pages/Dashboard/DashboardCars";
 
 import "./index.css";
 
@@ -29,6 +32,16 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+        children: [
+          {
+            index: true,
+            element: <DashboardMain />,
+          },
+          {
+            path: "cars",
+            element: <DashboardCars />,
+          },
+        ],
       },
     ],
   },

@@ -39,9 +39,10 @@ function NewSheetModal({ isOpen, onClose }) {
             </button>
           </div>
           <form className="p-4 md:p-5">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div className="bg-red-100">
-                <div className="mb-4">
+            {/* Form Content Container */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 bg-yellow-100">
+              <div className="flex flex-col gap-4 md:gap-0 md:justify-between bg-blue-100">
+                <div className="mb-0 bg-green-100">
                   <label
                     htmlFor="event"
                     className="block mb-2 text-sm font-semibold text-black"
@@ -63,7 +64,7 @@ function NewSheetModal({ isOpen, onClose }) {
                   </select>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-0 bg-green-100">
                   <label
                     htmlFor="session"
                     className="block mb-2 text-sm font-semibold text-black"
@@ -93,7 +94,7 @@ function NewSheetModal({ isOpen, onClose }) {
                   </select>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-0 bg-green-100">
                   <label
                     htmlFor="track-condition"
                     className="block mb-2 text-sm font-semibold text-black"
@@ -115,7 +116,7 @@ function NewSheetModal({ isOpen, onClose }) {
                   </select>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-0 bg-green-100">
                   <label
                     htmlFor="car"
                     className="block mb-2 text-sm font-semibold text-black"
@@ -137,7 +138,7 @@ function NewSheetModal({ isOpen, onClose }) {
                   </select>
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-0 bg-green-100">
                   <label
                     htmlFor="driver"
                     className="block mb-2 text-sm font-semibold text-black"
@@ -155,9 +156,9 @@ function NewSheetModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="">
+              <div className="bg-blue-100 flex flex-col gap-4">
                 {/* Tyre Pressure Input Container */}
-                <div className="">
+                <div className="bg-red-100">
                   <h4 className="text-md font-semibold text-black mb-2">
                     Tyre Pressure (psi)
                   </h4>
@@ -200,7 +201,7 @@ function NewSheetModal({ isOpen, onClose }) {
                       </div>
                     </div>
 
-                    <div className="flex mb-8 gap-4">
+                    <div className="flex mb-0 gap-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-rear-pressure"
@@ -241,7 +242,7 @@ function NewSheetModal({ isOpen, onClose }) {
                 </div>
 
                 {/* Ride Height Input Container */}
-                <div className="">
+                <div className="bg-red-100">
                   <h4 className="text-md font-semibold text-black mb-2">
                     Ride Height (mm)
                   </h4>
@@ -284,7 +285,7 @@ function NewSheetModal({ isOpen, onClose }) {
                       </div>
                     </div>
 
-                    <div className="flex mb-8 gap-4">
+                    <div className="flex mb-0 gap-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-rear-height"
@@ -325,161 +326,169 @@ function NewSheetModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="">
-                {/* Camber Input Container */}
-                <div className="">
+              <div className="bg-blue-100 flex flex-col gap-4">
+                {/* Tyre Pressure Input Container */}
+                <div className="bg-green-100">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Camber (degrees)
+                    Tyre Pressure (psi)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-camber"
+                          htmlFor="left-front-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-camber"
-                          id="left-front-camber"
+                          name="left-front-pressure"
+                          id="left-front-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter camber setting"
+                          placeholder="Enter tyre pressure"
                           required
+                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-camber"
+                          htmlFor="right-front-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-camber"
-                          id="right-front-camber"
+                          name="right-front-pressure"
+                          id="right-front-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter camber setting"
+                          placeholder="Enter tyre pressure"
                           required
+                          min="0"
                         />
                       </div>
                     </div>
 
-                    <div className="flex mb-8 gap-4">
+                    <div className="flex mb-0 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-camber"
+                          htmlFor="left-rear-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-camber"
-                          id="left-rear-camber"
+                          name="left-rear-pressure"
+                          id="left-rear-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter camber setting"
+                          placeholder="Enter tyre pressure"
                           required
+                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-camber"
+                          htmlFor="right-rear-pressure"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-camber"
-                          id="right-rear-camber"
+                          name="right-rear-pressure"
+                          id="right-rear-pressure"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter camber setting"
+                          placeholder="Enter tyre pressure"
                           required
+                          min="0"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Toe Input Container */}
-                <div className="">
+                {/* Ride Height Input Container */}
+                <div className="bg-green-100">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Toe (mm)
+                    Ride Height (mm)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-toe"
+                          htmlFor="left-front-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-toe"
-                          id="left-front-toe"
+                          name="left-front-height"
+                          id="left-front-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter toe setting"
+                          placeholder="Enter ride height"
                           required
+                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-toe"
+                          htmlFor="right-front-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-toe"
-                          id="right-front-toe"
+                          name="right-front-height"
+                          id="right-front-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter toe setting"
+                          placeholder="Enter ride height"
                           required
+                          min="0"
                         />
                       </div>
                     </div>
 
-                    <div className="flex mb-8 gap-4">
+                    <div className="flex mb-0 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-toe"
+                          htmlFor="left-rear-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-toe"
-                          id="left-rear-toe"
+                          name="left-rear-height"
+                          id="left-rear-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter toe setting"
+                          placeholder="Enter ride height"
                           required
+                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-toe"
+                          htmlFor="right-rear-height"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-toe"
-                          id="right-rear-toe"
+                          name="right-rear-height"
+                          id="right-rear-height"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter toe setting"
+                          placeholder="Enter ride height"
                           required
+                          min="0"
                         />
                       </div>
                     </div>

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
@@ -29,7 +30,7 @@ const startApolloServer = async () => {
   app.use(
     "/graphql",
     expressMiddleware(server, {
-      context: authMiddleware,
+      context: ({ req }) => authMiddleware({ req }),
     })
   );
 
@@ -49,6 +50,11 @@ const startApolloServer = async () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
     });
+  });
+
+  // Handle database connection errors
+  db.on("error", (err) => {
+    console.error("Database connection error:", err);
   });
 };
 

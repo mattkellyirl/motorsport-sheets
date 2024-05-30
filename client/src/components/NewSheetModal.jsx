@@ -39,17 +39,14 @@ function NewSheetModal({ isOpen, onClose }) {
             </button>
           </div>
           <form className="p-4 md:p-6">
-            {/* Form Content Container */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
+            <div className="grid grid-cols-1 gap-4 mb-6 md:grid-cols-3 md:gap-6">
               <div className="flex flex-col gap-4">
-                {/* Event and Session Input Container */}
-                <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">
+                <div>
+                  <h4 className="mb-2 text-md font-semibold text-black">
                     Event&nbsp;and&nbsp;Session&nbsp;Selection
                   </h4>
                   <div className="pt-4 border-t">
-                    <div className="flex mb-4 gap-4">
-                      {/* Event */}
+                    <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="event"
@@ -71,11 +68,9 @@ function NewSheetModal({ isOpen, onClose }) {
                           <option value="Event 3">Event 3</option>
                         </select>
                       </div>
-
-                      {/* Session */}
                       <div className="w-1/2">
                         <label
-                          htmlFor="event"
+                          htmlFor="session"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Session
@@ -103,9 +98,7 @@ function NewSheetModal({ isOpen, onClose }) {
                         </select>
                       </div>
                     </div>
-
-                    <div className="flex mb-0 gap-4">
-                      {/* Track Condition */}
+                    <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
                           htmlFor="track-condition"
@@ -127,8 +120,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           <option value="Wet">Wet</option>
                         </select>
                       </div>
-
-                      {/* Track Temperature */}
                       <div className="w-1/2">
                         <label
                           htmlFor="track-temp"
@@ -149,15 +140,12 @@ function NewSheetModal({ isOpen, onClose }) {
                     </div>
                   </div>
                 </div>
-
-                {/* Car and Driver Input Container */}
-                <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">
-                    Car and Driver Selection
+                <div>
+                  <h4 className="mb-2 text-md font-semibold text-black">
+                    Car&nbsp;and&nbsp;Driver&nbsp;Selection
                   </h4>
                   <div className="pt-4 border-t">
-                    <div className="flex mb-4 gap-4">
-                      {/* Car */}
+                    <div className="flex gap-4 mb-4">
                       <div className="w-full">
                         <label
                           htmlFor="car"
@@ -180,9 +168,7 @@ function NewSheetModal({ isOpen, onClose }) {
                         </select>
                       </div>
                     </div>
-
-                    <div className="flex mb-0 gap-4">
-                      {/* Driver */}
+                    <div className="flex gap-4 mb-0">
                       <div className="w-full">
                         <label
                           htmlFor="driver"
@@ -203,15 +189,13 @@ function NewSheetModal({ isOpen, onClose }) {
                   </div>
                 </div>
               </div>
-
               <div className="flex flex-col gap-4">
-                {/* Tyre Pressure Input Container */}
-                <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">
-                    Tyre Pressure (psi)
+                <div>
+                  <h4 className="mb-2 text-md font-semibold text-black">
+                    Tyre&nbsp;Pressure&nbsp;(psi)
                   </h4>
                   <div className="pt-4 border-t">
-                    <div className="flex mb-4 gap-4">
+                    <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-front-pressure"
@@ -229,7 +213,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           min="0"
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-front-pressure"
@@ -248,8 +231,7 @@ function NewSheetModal({ isOpen, onClose }) {
                         />
                       </div>
                     </div>
-
-                    <div className="flex mb-0 gap-4">
+                    <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-rear-pressure"
@@ -267,7 +249,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           min="0"
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-rear-pressure"
@@ -288,14 +269,12 @@ function NewSheetModal({ isOpen, onClose }) {
                     </div>
                   </div>
                 </div>
-
-                {/* Ride Height Input Container */}
-                <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">
-                    Ride Height (mm)
+                <div>
+                  <h4 className="mb-2 text-md font-semibold text-black">
+                    Ride&nbsp;Height&nbsp;(mm)
                   </h4>
                   <div className="pt-4 border-t">
-                    <div className="flex mb-4 gap-4">
+                    <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-front-height"
@@ -313,7 +292,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           min="0"
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-front-height"
@@ -332,8 +310,7 @@ function NewSheetModal({ isOpen, onClose }) {
                         />
                       </div>
                     </div>
-
-                    <div className="flex mb-0 gap-4">
+                    <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-rear-height"
@@ -351,7 +328,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           min="0"
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-rear-height"
@@ -373,15 +349,13 @@ function NewSheetModal({ isOpen, onClose }) {
                   </div>
                 </div>
               </div>
-
               <div className="flex flex-col gap-4">
-                {/* Camber Input Container */}
-                <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">
-                    Camber (°)
+                <div>
+                  <h4 className="mb-2 text-md font-semibold text-black">
+                    Camber&nbsp;(°)
                   </h4>
                   <div className="pt-4 border-t">
-                    <div className="flex mb-4 gap-4">
+                    <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-front-camber"
@@ -398,7 +372,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           required
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-front-camber"
@@ -416,8 +389,7 @@ function NewSheetModal({ isOpen, onClose }) {
                         />
                       </div>
                     </div>
-
-                    <div className="flex mb-0 gap-4">
+                    <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-rear-camber"
@@ -434,7 +406,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           required
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-rear-camber"
@@ -454,14 +425,12 @@ function NewSheetModal({ isOpen, onClose }) {
                     </div>
                   </div>
                 </div>
-
-                {/* Toe Input Container */}
-                <div className="">
-                  <h4 className="text-md font-semibold text-black mb-2">
-                    Toe (mm)
+                <div>
+                  <h4 className="mb-2 text-md font-semibold text-black">
+                    Toe&nbsp;(mm)
                   </h4>
                   <div className="pt-4 border-t">
-                    <div className="flex mb-4 gap-4">
+                    <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-front-toe"
@@ -478,7 +447,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           required
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-front-toe"
@@ -496,8 +464,7 @@ function NewSheetModal({ isOpen, onClose }) {
                         />
                       </div>
                     </div>
-
-                    <div className="flex mb-0 gap-4">
+                    <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
                           htmlFor="left-rear-toe"
@@ -514,7 +481,6 @@ function NewSheetModal({ isOpen, onClose }) {
                           required
                         />
                       </div>
-
                       <div className="w-1/2">
                         <label
                           htmlFor="right-rear-toe"
@@ -539,7 +505,7 @@ function NewSheetModal({ isOpen, onClose }) {
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                className="px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
               >
                 Add Sheet
               </button>

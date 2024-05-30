@@ -40,7 +40,7 @@ function NewSheetModal({ isOpen, onClose }) {
           </div>
           <form className="p-4 md:p-5">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div className="">
+              <div className="bg-red-100">
                 <div className="mb-4">
                   <label
                     htmlFor="event"
@@ -60,28 +60,6 @@ function NewSheetModal({ isOpen, onClose }) {
                     <option value="Event 1">Event 1</option>
                     <option value="Event 2">Event 2</option>
                     <option value="Event 3">Event 3</option>
-                  </select>
-                </div>
-
-                <div className="mb-4">
-                  <label
-                    htmlFor="car"
-                    className="block mb-2 text-sm font-semibold text-black"
-                  >
-                    Car
-                  </label>
-                  <select
-                    name="car"
-                    id="car"
-                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select...
-                    </option>
-                    <option value="Car 1">Car 1</option>
-                    <option value="Car 2">Car 2</option>
-                    <option value="Car 3">Car 3</option>
                   </select>
                 </div>
 
@@ -112,6 +90,50 @@ function NewSheetModal({ isOpen, onClose }) {
                     <option value="Race 3">Race 3</option>
                     <option value="Race 4">Race 4</option>
                     <option value="Race 5">Race 5</option>
+                  </select>
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="track-condition"
+                    className="block mb-2 text-sm font-semibold text-black"
+                  >
+                    Track Condition
+                  </label>
+                  <select
+                    name="track-condition"
+                    id="track-condition"
+                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                    required
+                  >
+                    <option value="" disabled selected hidden>
+                      Please select...
+                    </option>
+                    <option value="Dry">Dry</option>
+                    <option value="Damp">Damp</option>
+                    <option value="Wet">Wet</option>
+                  </select>
+                </div>
+
+                <div className="mb-4">
+                  <label
+                    htmlFor="car"
+                    className="block mb-2 text-sm font-semibold text-black"
+                  >
+                    Car
+                  </label>
+                  <select
+                    name="car"
+                    id="car"
+                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                    required
+                  >
+                    <option value="" disabled selected hidden>
+                      Please select...
+                    </option>
+                    <option value="Car 1">Car 1</option>
+                    <option value="Car 2">Car 2</option>
+                    <option value="Car 3">Car 3</option>
                   </select>
                 </div>
 

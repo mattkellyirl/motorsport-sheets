@@ -9,6 +9,7 @@
     "seed": "echo \"Error: seed script not implemented\" && exit 1"
   },
   "dependencies": {
+    "@apollo/server": "^4.10.4",
     "apollo-server-express": "^3.13.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",

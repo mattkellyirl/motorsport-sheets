@@ -40,125 +40,204 @@ function NewSheetModal({ isOpen, onClose }) {
           </div>
           <form className="p-4 md:p-5">
             {/* Form Content Container */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 bg-yellow-100">
-              <div className="flex flex-col gap-4 md:gap-0 md:justify-between bg-blue-100">
-                <div className="mb-0 bg-green-100">
-                  <label
-                    htmlFor="event"
-                    className="block mb-2 text-sm font-semibold text-black"
-                  >
-                    Event
-                  </label>
-                  <select
-                    name="event"
-                    id="event"
-                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select...
-                    </option>
-                    <option value="Event 1">Event 1</option>
-                    <option value="Event 2">Event 2</option>
-                    <option value="Event 3">Event 3</option>
-                  </select>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+              <div className="flex flex-col gap-4">
+                {/* Event and Session Input Container */}
+                <div className="">
+                  <h4 className="text-md font-semibold text-black mb-2">
+                    Event&nbsp;and&nbsp;Session&nbsp;Selection
+                  </h4>
+                  <div className="pt-4 border-t">
+                    <div className="flex mb-4 gap-4">
+                      {/* Event */}
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="event"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Event
+                        </label>
+                        <select
+                          name="event"
+                          id="event"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          required
+                        >
+                          <option value="" disabled selected hidden>
+                            Please select...
+                          </option>
+                          <option value="Event 1">Event 1</option>
+                          <option value="Event 2">Event 2</option>
+                          <option value="Event 3">Event 3</option>
+                        </select>
+                      </div>
+
+                      {/* Session */}
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="event"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Session
+                        </label>
+                        <select
+                          name="session"
+                          id="session"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          required
+                        >
+                          <option value="" disabled selected hidden>
+                            Please select...
+                          </option>
+                          <option value="Practice 1">Practice 1</option>
+                          <option value="Practice 2">Practice 2</option>
+                          <option value="Practice 3">Practice 3</option>
+                          <option value="Practice 4">Practice 4</option>
+                          <option value="Practice 5">Practice 5</option>
+                          <option value="Qualifying">Qualifying</option>
+                          <option value="Race 1">Race 1</option>
+                          <option value="Race 2">Race 2</option>
+                          <option value="Race 3">Race 3</option>
+                          <option value="Race 4">Race 4</option>
+                          <option value="Race 5">Race 5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="flex mb-0 gap-4">
+                      {/* Track Condition */}
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="track-condition"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Track&nbsp;Condition
+                        </label>
+                        <select
+                          name="track-condition"
+                          id="track-condition"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          required
+                        >
+                          <option value="" disabled selected hidden>
+                            Please select...
+                          </option>
+                          <option value="Dry">Dry</option>
+                          <option value="Damp">Damp</option>
+                          <option value="Wet">Wet</option>
+                        </select>
+                      </div>
+
+                      {/* Track Temperature */}
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="track-temp"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Track&nbsp;Temp&nbsp;(°C)
+                        </label>
+                        <input
+                          type="number"
+                          name="track-temp"
+                          id="track-temp"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter track temp"
+                          required
+                          min="0"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="mb-0 bg-green-100">
-                  <label
-                    htmlFor="session"
-                    className="block mb-2 text-sm font-semibold text-black"
-                  >
-                    Session
-                  </label>
-                  <select
-                    name="session"
-                    id="session"
-                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select...
-                    </option>
-                    <option value="Practice 1">Practice 1</option>
-                    <option value="Practice 2">Practice 2</option>
-                    <option value="Practice 3">Practice 3</option>
-                    <option value="Practice 4">Practice 4</option>
-                    <option value="Practice 5">Practice 5</option>
-                    <option value="Qualifying">Qualifying</option>
-                    <option value="Race 1">Race 1</option>
-                    <option value="Race 2">Race 2</option>
-                    <option value="Race 3">Race 3</option>
-                    <option value="Race 4">Race 4</option>
-                    <option value="Race 5">Race 5</option>
-                  </select>
-                </div>
+                {/* Car and Driver Input Container */}
+                <div className="">
+                  <h4 className="text-md font-semibold text-black mb-2">
+                    Car and Driver Selection
+                  </h4>
+                  <div className="pt-4 border-t">
+                    <div className="flex mb-4 gap-4">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="left-front-height"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Car
+                        </label>
+                        <input
+                          type="number"
+                          name="left-front-height"
+                          id="left-front-height"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter ride height"
+                          required
+                          min="0"
+                        />
+                      </div>
 
-                <div className="mb-0 bg-green-100">
-                  <label
-                    htmlFor="track-condition"
-                    className="block mb-2 text-sm font-semibold text-black"
-                  >
-                    Track Condition
-                  </label>
-                  <select
-                    name="track-condition"
-                    id="track-condition"
-                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select...
-                    </option>
-                    <option value="Dry">Dry</option>
-                    <option value="Damp">Damp</option>
-                    <option value="Wet">Wet</option>
-                  </select>
-                </div>
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="right-front-height"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Right Front
+                        </label>
+                        <input
+                          type="number"
+                          name="right-front-height"
+                          id="right-front-height"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter ride height"
+                          required
+                          min="0"
+                        />
+                      </div>
+                    </div>
 
-                <div className="mb-0 bg-green-100">
-                  <label
-                    htmlFor="car"
-                    className="block mb-2 text-sm font-semibold text-black"
-                  >
-                    Car
-                  </label>
-                  <select
-                    name="car"
-                    id="car"
-                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select...
-                    </option>
-                    <option value="Car 1">Car 1</option>
-                    <option value="Car 2">Car 2</option>
-                    <option value="Car 3">Car 3</option>
-                  </select>
-                </div>
+                    <div className="flex mb-0 gap-4">
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="left-rear-height"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Driver
+                        </label>
+                        <input
+                          type="number"
+                          name="left-rear-height"
+                          id="left-rear-height"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter ride height"
+                          required
+                          min="0"
+                        />
+                      </div>
 
-                <div className="mb-0 bg-green-100">
-                  <label
-                    htmlFor="driver"
-                    className="block mb-2 text-sm font-semibold text-black"
-                  >
-                    Driver
-                  </label>
-                  <input
-                    type="text"
-                    name="driver"
-                    id="driver"
-                    className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                    placeholder="Enter driver name"
-                    required
-                  />
+                      <div className="w-1/2">
+                        <label
+                          htmlFor="right-rear-height"
+                          className="block mb-2 text-sm font-semibold text-black"
+                        >
+                          Right Rear
+                        </label>
+                        <input
+                          type="number"
+                          name="right-rear-height"
+                          id="right-rear-height"
+                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
+                          placeholder="Enter ride height"
+                          required
+                          min="0"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-blue-100 flex flex-col gap-4">
+              <div className="flex flex-col gap-4">
                 {/* Tyre Pressure Input Container */}
-                <div className="bg-red-100">
+                <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
                     Tyre Pressure (psi)
                   </h4>
@@ -242,7 +321,7 @@ function NewSheetModal({ isOpen, onClose }) {
                 </div>
 
                 {/* Ride Height Input Container */}
-                <div className="bg-red-100">
+                <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
                     Ride Height (mm)
                   </h4>
@@ -326,47 +405,45 @@ function NewSheetModal({ isOpen, onClose }) {
                 </div>
               </div>
 
-              <div className="bg-blue-100 flex flex-col gap-4">
-                {/* Tyre Pressure Input Container */}
-                <div className="bg-green-100">
+              <div className="flex flex-col gap-4">
+                {/* Camber Input Container */}
+                <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Tyre Pressure (psi)
+                    Camber (°)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-pressure"
+                          htmlFor="left-front-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-pressure"
-                          id="left-front-pressure"
+                          name="left-front-camber"
+                          id="left-front-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter tyre pressure"
+                          placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-pressure"
+                          htmlFor="right-front-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-pressure"
-                          id="right-front-pressure"
+                          name="right-front-camber"
+                          id="right-front-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter tyre pressure"
+                          placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>
@@ -374,83 +451,79 @@ function NewSheetModal({ isOpen, onClose }) {
                     <div className="flex mb-0 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-pressure"
+                          htmlFor="left-rear-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-pressure"
-                          id="left-rear-pressure"
+                          name="left-rear-camber"
+                          id="left-rear-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter tyre pressure"
+                          placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-pressure"
+                          htmlFor="right-rear-camber"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-pressure"
-                          id="right-rear-pressure"
+                          name="right-rear-camber"
+                          id="right-rear-camber"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter tyre pressure"
+                          placeholder="Enter camber setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Ride Height Input Container */}
-                <div className="bg-green-100">
+                {/* Toe Input Container */}
+                <div className="">
                   <h4 className="text-md font-semibold text-black mb-2">
-                    Ride Height (mm)
+                    Toe (mm)
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-height"
+                          htmlFor="left-front-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-height"
-                          id="left-front-height"
+                          name="left-front-toe"
+                          id="left-front-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
+                          placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-height"
+                          htmlFor="right-front-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-height"
-                          id="right-front-height"
+                          name="right-front-toe"
+                          id="right-front-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
+                          placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>
@@ -458,37 +531,35 @@ function NewSheetModal({ isOpen, onClose }) {
                     <div className="flex mb-0 gap-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-height"
+                          htmlFor="left-rear-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-height"
-                          id="left-rear-height"
+                          name="left-rear-toe"
+                          id="left-rear-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
+                          placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
 
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-height"
+                          htmlFor="right-rear-toe"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-height"
-                          id="right-rear-height"
+                          name="right-rear-toe"
+                          id="right-rear-toe"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
+                          placeholder="Enter toe setting"
                           required
-                          min="0"
                         />
                       </div>
                     </div>

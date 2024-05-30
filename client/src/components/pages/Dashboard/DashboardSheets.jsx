@@ -18,7 +18,7 @@ function DashboardSheets() {
 
             <button
               onClick={openModal}
-              className="text-center text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 w-max"
+              className="text-center text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 w-max"
             >
               Add Sheet
             </button>

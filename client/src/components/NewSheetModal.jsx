@@ -38,9 +38,9 @@ function NewSheetModal({ isOpen, onClose }) {
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <form className="p-4 md:p-5">
+          <form className="p-4 md:p-6">
             {/* Form Content Container */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
               <div className="flex flex-col gap-4">
                 {/* Event and Session Input Container */}
                 <div className="">

@@ -52,17 +52,19 @@ function DashboardNav() {
                 <span className="ms-3 font-semibold">Dashboard</span>
               </Link>
             </li>
+
             <li>
               <Link
-                to="/dashboard/sheets"
+                to="/dashboard/cars"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
-                <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                 <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
-                  Your Sheets
+                  Your Cars
                 </span>
               </Link>
             </li>
+
             <li>
               <Link
                 to="/dashboard/events"
@@ -74,14 +76,15 @@ function DashboardNav() {
                 </span>
               </Link>
             </li>
+
             <li>
               <Link
-                to="/dashboard/cars"
+                to="/dashboard/sheets"
                 className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
               >
-                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
+                <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
                 <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
-                  Your Cars
+                  Your Sheets
                 </span>
               </Link>
             </li>

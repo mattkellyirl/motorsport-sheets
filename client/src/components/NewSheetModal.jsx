@@ -157,77 +157,46 @@ function NewSheetModal({ isOpen, onClose }) {
                   </h4>
                   <div className="pt-4 border-t">
                     <div className="flex mb-4 gap-4">
-                      <div className="w-1/2">
+                      {/* Car */}
+                      <div className="w-full">
                         <label
-                          htmlFor="left-front-height"
+                          htmlFor="car"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Car
                         </label>
-                        <input
-                          type="number"
-                          name="left-front-height"
-                          id="left-front-height"
+                        <select
+                          name="car"
+                          id="car"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
                           required
-                          min="0"
-                        />
-                      </div>
-
-                      <div className="w-1/2">
-                        <label
-                          htmlFor="right-front-height"
-                          className="block mb-2 text-sm font-semibold text-black"
                         >
-                          Right Front
-                        </label>
-                        <input
-                          type="number"
-                          name="right-front-height"
-                          id="right-front-height"
-                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
-                          required
-                          min="0"
-                        />
+                          <option value="" disabled selected hidden>
+                            Please select...
+                          </option>
+                          <option value="Car 1">Car 1</option>
+                          <option value="Car 2">Car 2</option>
+                          <option value="Car 3">Car 3</option>
+                        </select>
                       </div>
                     </div>
 
                     <div className="flex mb-0 gap-4">
-                      <div className="w-1/2">
+                      {/* Driver */}
+                      <div className="w-full">
                         <label
-                          htmlFor="left-rear-height"
+                          htmlFor="driver"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Driver
                         </label>
                         <input
-                          type="number"
-                          name="left-rear-height"
-                          id="left-rear-height"
+                          type="text"
+                          name="driver"
+                          id="driver"
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
+                          placeholder="Enter driver name"
                           required
-                          min="0"
-                        />
-                      </div>
-
-                      <div className="w-1/2">
-                        <label
-                          htmlFor="right-rear-height"
-                          className="block mb-2 text-sm font-semibold text-black"
-                        >
-                          Right Rear
-                        </label>
-                        <input
-                          type="number"
-                          name="right-rear-height"
-                          id="right-rear-height"
-                          className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                          placeholder="Enter ride height"
-                          required
-                          min="0"
                         />
                       </div>
                     </div>

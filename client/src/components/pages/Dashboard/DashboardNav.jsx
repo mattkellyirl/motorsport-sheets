@@ -1,10 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
 import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";
 import logo from "/motorsport-sheets.png";
 
 function DashboardNav() {
+  const navigate = useNavigate();
+
+  const handleUserLogout = () => {
+    try {
+      const userToken = localStorage.getItem("authToken");
+      if (!userToken) {
+        console.error("Request Failed - User Not Logged In");
+      } else {
+        localStorage.removeItem("authToken");
+        console.log("Request Successful - User Logged Out");
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Request Failed - Logging Out User:", error.message);
+    }
+  };
+
   return (
     <div>
       <button
@@ -83,7 +100,7 @@ function DashboardNav() {
           <ul className="pt-4 mt-4 space-y-2 font-semibold border-t border-gray-200">
             <li>
               <Link
-                to=""
+                onClick={handleUserLogout}
                 className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
                 <MdLogout className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />

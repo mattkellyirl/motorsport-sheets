@@ -40,7 +40,7 @@ const resolvers = {
         } else {
           const newUser = await User.create({ email, password });
           const token = signToken(newUser);
-          console.log("User created successfully:", newUser);
+          console.log(`Request Successful - Created User ${email}:`, newUser);
           return { token, user: newUser };
         }
       } catch (error) {

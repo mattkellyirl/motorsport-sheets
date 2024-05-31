@@ -1,8 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+// import { useMutation } from "@apollo/client";
+// import { LOGIN_USER } from "../../../utils/mutations";
 import logo from "/motorsport-sheets.png";
 
 function LoginForm() {
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // // const [loginUser] = useMutation(LOGIN_USER);
+  // const navigate = useNavigate();
+
+  // const handleUserLogin = async (event) => {
+  //   event.preventDefault();
+
+  //   try {
+  //     const { data } = await loginUser({
+  //       variables: { email, password },
+  //     });
+
+  //     if (!data) {
+  //       console.error("Request Failed - No Login Data Recieved");
+  //       return;
+  //     }
+
+  //     if (!data.loginUser) {
+  //       console.error("Request Failed - No loginUser Data received");
+  //       return;
+  //     }
+
+  //     if (!data.loginUser.token) {
+  //       console.error("Request Failed - No Token Received");
+  //       return;
+  //     } else {
+  //       const { token: userToken } = data.loginUser;
+  //       localStorage.setItem("authToken", userToken);
+  //       console.log("Request Successful - User Logged In");
+  //       navigate("/dashboard");
+  //     }
+  //   } catch (error) {
+  //     console.error("Request Failed - Logging In User:", error.message);
+  //   }
+  // };
+
   return (
     <section className="bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
@@ -14,7 +53,9 @@ function LoginForm() {
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-black md:text-2xl">
               Login
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            {/* <form className="space-y-4 md:space-y-6" onSubmit={handleUserLogin}> */}
+
+            <form className="space-y-4 md:space-y-6">
               <div>
                 <label
                   htmlFor="email"
@@ -28,7 +69,9 @@ function LoginForm() {
                   id="email"
                   className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600"
                   placeholder="Enter your email address"
-                  required=""
+                  // value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div>
@@ -44,7 +87,9 @@ function LoginForm() {
                   id="password"
                   placeholder="••••••••"
                   className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600"
-                  required=""
+                  // value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <button

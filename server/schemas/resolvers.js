@@ -19,8 +19,13 @@ const resolvers = {
     user: async (_, { id }) => {
       try {
         const user = await User.findById(id);
-        console.log(`Request Successful - User ${id}:`, user);
-        return user;
+        if (!user) {
+          console.error(`Request Failed - User ${id} Not Found`);
+          throw new Error(`Request Failed - User ${id} Not Found`);
+        } else {
+          console.log(`Request Successful - User ${id}:`, user);
+          return user;
+        }
       } catch (error) {
         console.error(`Request Failed - User ${id}:`, error.message);
         throw new Error(`Request Failed - User ${id}`);

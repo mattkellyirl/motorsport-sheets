@@ -99,13 +99,13 @@ function DashboardNav() {
           </ul>
           <ul className="pt-4 mt-4 space-y-2 font-semibold border-t border-gray-200">
             <li>
-              <Link
+              <button
                 onClick={handleUserLogout}
-                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+                className="flex items-center p-2 w-full text-black rounded-lg hover:bg-gray-200 group"
               >
                 <MdLogout className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
                 <span className="ml-3">Logout</span>
-              </Link>
+              </button>
             </li>
           </ul>
         </div>

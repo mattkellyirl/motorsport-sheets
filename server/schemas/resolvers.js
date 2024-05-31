@@ -35,7 +35,8 @@ const resolvers = {
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
-          throw new Error("User already exists");
+          console.error(`Request Failed - User ${email} Already Exists`);
+          throw new Error(`Request Failed - User ${email} Already Exists`);
         } else {
           const newUser = await User.create({ email, password });
           const token = signToken(newUser);
@@ -43,33 +44,36 @@ const resolvers = {
           return { token, user: newUser };
         }
       } catch (error) {
-        console.error("Error adding user:", error.message);
-        throw new Error(error.message);
+        console.error(`Request Failed - Add User ${email}:`, error.message);
+        throw new Error(`Request Failed - Add User ${email}`);
       }
     },
 
-    // Login existing user
+    // Login Existing User
     loginUser: async (_, { email, password }) => {
       try {
-        console.log("Attempting to login user:", email);
         const user = await User.findOne({ email });
 
         if (!user) {
-          throw new AuthenticationError("Invalid credentials");
+          throw new AuthenticationError(`User ${email} Not Found`);
+        } else {
+          const validPassword = await user.isCorrectPassword(password);
+          if (!validPassword) {
+            throw new AuthenticationError(
+              "Invalid Password - Please Try Again"
+            );
+          } else {
+            const token = signToken(user);
+            console.log(`Request Successful - Logged In User ${email}:`, user);
+            return { token, user };
+          }
         }
-
-        const validPassword = await user.isCorrectPassword(password);
-        if (!validPassword) {
-          throw new AuthenticationError("Invalid credentials");
-        }
-
-        const token = signToken(user);
-        console.log("User logged in successfully:", user);
-        return { token, user };
       } catch (error) {
-        console.error("Error logging in user:", error.message);
-        console.error(error.stack); // Log the stack trace
-        throw new Error(`Error logging in user: ${error.message}`);
+        console.error(
+          `Request Failed - Logging In User ${email}:`,
+          error.message
+        );
+        throw new Error(`Request Failed - Logging In User ${email}`);
       }
     },
   },

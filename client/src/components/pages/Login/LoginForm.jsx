@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import AuthService from "../../../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../../utils/mutations";
-import AuthService from "../../../utils/auth";
 import logo from "/motorsport-sheets.png";
 
 function LoginForm() {
@@ -69,7 +69,7 @@ function LoginForm() {
                   className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600"
                   placeholder="Enter your email address"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(event) => setEmail(event.target.value)}
                   required
                 />
               </div>
@@ -87,7 +87,7 @@ function LoginForm() {
                   placeholder="••••••••"
                   className="block w-full p-2.5 bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(event) => setPassword(event.target.value)}
                   required
                 />
               </div>

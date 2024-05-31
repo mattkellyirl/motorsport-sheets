@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import AuthService from "../../../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
-import AuthService from "../../../utils/auth";
 import logo from "/motorsport-sheets.png";
 
 function SignupForm() {

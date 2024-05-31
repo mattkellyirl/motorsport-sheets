@@ -1,9 +1,9 @@
 import React from "react";
+import AuthService from "../../../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
 import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";
 import logo from "/motorsport-sheets.png";
-import AuthService from "../../../utils/auth";
 
 function DashboardNav() {
   const navigate = useNavigate();

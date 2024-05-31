@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
-import { MdSpaceDashboard, MdEventNote } from "react-icons/md";
+import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";
 import logo from "/motorsport-sheets.png";
 
 function DashboardNav() {
@@ -12,7 +12,7 @@ function DashboardNav() {
         data-drawer-toggle="logo-sidebar"
         aria-controls="logo-sidebar"
         type="button"
-        className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -31,61 +31,63 @@ function DashboardNav() {
       </button>
 
       <aside
-        id="logo-sidebar"
+        id="separator-sidebar"
         className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100">
           <Link to="/">
-            <div className="flex justify-center ps-2.5 mb-5">
+            <div className="flex justify-center pl-2.5 mb-5">
               <img src={logo} alt="Motorsport Sheets" className="h-12" />
             </div>
           </Link>
 
-          <ul className="space-y-2 font-medium">
+          <ul className="space-y-2 font-semibold">
             <li>
               <Link
                 to="/dashboard"
-                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
-                <MdSpaceDashboard className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="ms-3 font-semibold">Dashboard</span>
+                <MdSpaceDashboard className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Dashboard</span>
               </Link>
             </li>
-
             <li>
               <Link
                 to="/dashboard/cars"
-                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
-                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
-                  Your Cars
-                </span>
+                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Your Cars</span>
               </Link>
             </li>
-
             <li>
               <Link
                 to="/dashboard/events"
-                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
-                <MdEventNote className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
-                  Your Events
-                </span>
+                <MdEventNote className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Your Events</span>
               </Link>
             </li>
-
             <li>
               <Link
                 to="/dashboard/sheets"
-                className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
-                <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" />
-                <span className="flex-1 ms-3 whitespace-nowrap font-semibold">
-                  Your Sheets
-                </span>
+                <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Your Sheets</span>
+              </Link>
+            </li>
+          </ul>
+          <ul className="pt-4 mt-4 space-y-2 font-semibold border-t border-gray-200">
+            <li>
+              <Link
+                to=""
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <MdLogout className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Logout</span>
               </Link>
             </li>
           </ul>

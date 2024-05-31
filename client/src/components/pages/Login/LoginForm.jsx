@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../../utils/mutations";
+import AuthService from "../../../utils/auth";
 import logo from "/motorsport-sheets.png";
 
 function LoginForm() {
@@ -33,7 +34,7 @@ function LoginForm() {
         return;
       } else {
         const { token: userToken } = data.loginUser;
-        localStorage.setItem("authToken", userToken);
+        AuthService.login(userToken);
         console.log("Request Successful - User Logged In");
         navigate("/dashboard");
       }

@@ -1,70 +1,75 @@
-const { User } = require("../models");
-const { signToken, AuthenticationError } = require("../utils/auth");
+const User = require("../models/User");
+const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
-    //  Fetch all users
+    // Get All Users
     users: async () => {
       try {
-        return await User.find({});
+        const allUsers = await User.find({});
+        console.log("Request Successful - All Users", allUsers);
+        return allUsers;
       } catch (error) {
-        throw new Error("Error fetching users");
+        console.error("Request Failed - All Users", error.message);
+        throw new Error("Request Failed - All Users");
       }
     },
-    //  Fetch user by ID
+    // Get User By ID
     user: async (_, { id }) => {
       try {
-        return User.findById(id);
+        const user = await User.findById(id);
+        console.log(`Request Successful - User ${id}:`, user);
+        return user;
       } catch (error) {
-        throw new Error("Error fetching user by ID");
+        console.error(`Request Failed - User ${id}:`, error.message);
+        throw new Error(`Request Failed - User ${id}`);
       }
     },
   },
 
   Mutation: {
+    // Add New User
     addUser: async (_, { email, password }) => {
       try {
-        // Check if user already exists
         const existingUser = await User.findOne({ email });
 
-        // If user exists, throw error
         if (existingUser) {
           throw new Error("User already exists");
         } else {
-          // If user doesn't exist, create user and sign token
           const newUser = await User.create({ email, password });
           const token = signToken(newUser);
-
-          // Return token and new user
+          console.log("User created successfully:", newUser);
           return { token, user: newUser };
         }
       } catch (error) {
-        throw new Error("Error adding user");
+        console.error("Error adding user:", error.message);
+        throw new Error(error.message);
       }
     },
 
+    // Login existing user
     loginUser: async (_, { email, password }) => {
       try {
-        // Check to see if user exists
+        console.log("Attempting to login user:", email);
         const user = await User.findOne({ email });
 
-        // If user doesn't exist, throw error
         if (!user) {
           throw new AuthenticationError("Invalid credentials");
-        } else {
-          // If user exists, check password
-          const validPassword = await user.isCorrectPassword(password);
-          // If password is incorrect, throw error
-          if (!validPassword) {
-            throw new AuthenticationError("Invalid credentials");
-          } else {
-            // If password is correct, sign in user and return token and user
-            const token = signToken(user);
-            return { token, user };
-          }
         }
+
+        const validPassword = await user.isCorrectPassword(password);
+        if (!validPassword) {
+          throw new AuthenticationError("Invalid credentials");
+        }
+
+        const token = signToken(user);
+        console.log("User logged in successfully:", user);
+        return { token, user };
       } catch (error) {
-        throw new Error("Error logging in user");
+        console.error("Error logging in user:", error.message);
+        console.error(error.stack); // Log the stack trace
+        throw new Error(`Error logging in user: ${error.message}`);
       }
     },
   },

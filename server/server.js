@@ -3,6 +3,7 @@ const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
+const cors = require("cors"); // Import cors
 const { authMiddleware } = require("./utils/auth");
 
 const { typeDefs, resolvers } = require("./schemas");
@@ -13,6 +14,19 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+});
+
+// Apply CORS middleware
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
+
+// Add logging middleware
+app.use((req, res, next) => {
+  console.log(`${req.method} request for ${req.url}`);
+  next();
 });
 
 // Start the Apollo Server and configure middleware

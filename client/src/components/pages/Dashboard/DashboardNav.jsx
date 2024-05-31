@@ -3,17 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
 import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";
 import logo from "/motorsport-sheets.png";
+import AuthService from "../../../utils/auth";
 
 function DashboardNav() {
   const navigate = useNavigate();
 
   const handleUserLogout = () => {
     try {
-      const userToken = localStorage.getItem("authToken");
-      if (!userToken) {
+      if (!AuthService.loggedIn()) {
         console.error("Request Failed - User Not Logged In");
       } else {
-        localStorage.removeItem("authToken");
+        AuthService.logout();
         console.log("Request Successful - User Logged Out");
         navigate("/login");
       }

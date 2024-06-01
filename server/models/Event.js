@@ -1,26 +1,27 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const carSchema = new Schema({
-  make: {
+const eventSchema = new Schema({
+  type: {
     type: String,
     required: true,
+    enum: ["Race Event", "Test Event"],
   },
-  model: {
+  championship: {
     type: String,
-    required: true,
+    required: false,
   },
-  year: {
-    type: Number,
-    required: true,
-  },
-  raceNumber: {
+  round: {
     type: Number,
     required: false,
   },
-  odometer: {
-    type: Number,
-    required: false,
+  track: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -29,6 +30,6 @@ const carSchema = new Schema({
   },
 });
 
-const Car = mongoose.model("Car", carSchema);
+const Event = mongoose.model("Event", eventSchema);
 
-module.exports = Car;
+module.exports = Event;

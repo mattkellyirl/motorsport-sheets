@@ -3,7 +3,7 @@ const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
-const cors = require("cors"); // Import cors
+const cors = require("cors");
 const { authMiddleware } = require("./utils/auth");
 
 const { typeDefs, resolvers } = require("./schemas");
@@ -15,6 +15,20 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+
+// DEBUGGING
+// const server = new ApolloServer({
+//   typeDefs,
+//   resolvers,
+//   formatError: (err) => {
+//     console.error("GraphQL Error:", err);
+//     return err;
+//   },
+//   formatResponse: (response) => {
+//     console.log("GraphQL Response:", response);
+//     return response;
+//   },
+// });
 
 // Apply CORS middleware
 app.use(
@@ -47,6 +61,18 @@ const startApolloServer = async () => {
       context: ({ req }) => authMiddleware({ req }),
     })
   );
+
+  // DEBUGGING
+  // app.use(
+  //   "/graphql",
+  //   expressMiddleware(server, {
+  //     context: ({ req }) => {
+  //       const modifiedReq = authMiddleware({ req });
+  //       console.log("Received request:", modifiedReq.body);
+  //       return { req: modifiedReq };
+  //     },
+  //   })
+  // );
 
   // Serve the React app in production
   if (process.env.NODE_ENV === "production") {

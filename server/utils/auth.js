@@ -35,9 +35,12 @@ module.exports = {
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-    } catch {
+    } catch (err) {
       // If token is invalid, throw an AuthenticationError
       throw new AuthenticationError("Invalid token");
+
+      // DEBUGGING BYPASS AUTHENTICATION ERROR
+      // console.log("Invalid token", err);
     }
 
     // Return the request object with user data attached

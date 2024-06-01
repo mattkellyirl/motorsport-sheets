@@ -25,12 +25,18 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem("authToken", idToken);
-    window.location.assign("/dashboard");
+
+    setTimeout(() => {
+      window.location.assign("/dashboard");
+    }, 1000);
   }
 
   logout() {
     localStorage.removeItem("authToken");
-    window.location.assign("/login");
+
+    setTimeout(() => {
+      window.location.assign("/login");
+    }, 1000);
   }
 }
 

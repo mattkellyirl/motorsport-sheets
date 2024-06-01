@@ -1,13 +1,11 @@
 import React from "react";
-import AuthService from "../../../utils/auth";
+import AuthService from "../../../utils/authService";
 import { Link, useNavigate } from "react-router-dom";
 import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
 import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";
 import logo from "/motorsport-sheets.png";
 
 function DashboardNav() {
-  const navigate = useNavigate();
-
   const handleUserLogout = () => {
     try {
       if (!AuthService.loggedIn()) {
@@ -15,7 +13,6 @@ function DashboardNav() {
       } else {
         AuthService.logout();
         console.log("Request Successful - User Logged Out");
-        navigate("/login");
       }
     } catch (error) {
       console.error("Request Failed - Logging Out User:", error.message);

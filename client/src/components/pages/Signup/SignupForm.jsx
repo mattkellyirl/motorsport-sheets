@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthService from "../../../utils/auth";
+import AuthService from "../../../utils/authService";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
@@ -9,15 +9,18 @@ function SignupForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [addUser] = useMutation(ADD_USER);
-  const navigate = useNavigate();
 
   const handleUserSignup = async (event) => {
     event.preventDefault();
+    console.log("Signup attempt with email:", email);
 
     try {
       const { data } = await addUser({
         variables: { email, password },
       });
+
+      // DEBUGGING
+      // console.log("Server response:", data);
 
       if (!data) {
         console.error("Request Failed - No Signup Data Recieved");
@@ -36,7 +39,6 @@ function SignupForm() {
         const { token: userToken } = data.addUser;
         AuthService.login(userToken);
         console.log("Request Successful - Signed Up User");
-        navigate("/dashboard");
       }
     } catch (error) {
       console.error("Request Failed - Signing Up User:", error.message);

@@ -34,20 +34,28 @@ const resolvers = {
   },
 
   Mutation: {
-    // Add New User
     addUser: async (_, { email, password }) => {
       try {
-        const existingUser = await User.findOne({ email });
+        console.log(`Signup attempt for: ${email}`);
 
+        // Check if user already exists
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
           console.error(`Request Failed - User ${email} Already Exists`);
           throw new Error(`Request Failed - User ${email} Already Exists`);
-        } else {
-          const newUser = await User.create({ email, password });
-          const token = signToken(newUser);
-          console.log(`Request Successful - Created User ${email}:`, newUser);
-          return { token, user: newUser };
         }
+
+        // Create new user
+        console.log("Creating new user...");
+        const newUser = await User.create({ email, password });
+        console.log(`Request Successful - Created User ${email}:`, newUser);
+
+        // Generate token
+        console.log("Generating token...");
+        const token = signToken(newUser);
+        console.log(`Token generated for user ${email}`);
+
+        return { token, user: newUser };
       } catch (error) {
         console.error(`Request Failed - Add User ${email}:`, error.message);
         throw new Error(`Request Failed - Add User ${email}`);
@@ -57,6 +65,8 @@ const resolvers = {
     // Login Existing User
     loginUser: async (_, { email, password }) => {
       try {
+        console.log(`Login attempt for: ${email}`);
+
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -68,7 +78,9 @@ const resolvers = {
               "Invalid Password - Please Try Again"
             );
           } else {
+            console.log("Generating token...");
             const token = signToken(user);
+            console.log(`Token generated for user ${email}`);
             console.log(`Request Successful - Logged In User ${email}:`, user);
             return { token, user };
           }

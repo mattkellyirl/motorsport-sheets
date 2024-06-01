@@ -1,5 +1,5 @@
 const { GraphQLScalarType, Kind } = require("graphql");
-const { User, Car, Event } = require("./models");
+const { User, Car, Event } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 

@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Car = require("../models/Car");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -29,6 +30,34 @@ const resolvers = {
       } catch (error) {
         console.error(`Request Failed - User ${id}:`, error.message);
         throw new Error(`Request Failed - User ${id}`);
+      }
+    },
+    // Get All Cars
+    cars: async () => {
+      try {
+        const allCars = await Car.find({});
+        console.log("Request Successful - All Cars", allCars);
+        return allCars;
+      } catch (error) {
+        console.error("Request Failed - All Cars", error.message);
+        throw new Error("Request Failed - All Cars");
+      }
+    },
+
+    // Get Car By ID
+    car: async (_, { id }) => {
+      try {
+        const car = await Car.findById(id).populate("owner");
+        if (!car) {
+          console.error(`Request Failed - Car ${id} Not Found`);
+          throw new Error(`Request Failed - Car ${id} Not Found`);
+        } else {
+          console.log(`Request Successful - Car ${id}:`, car);
+          return car;
+        }
+      } catch (error) {
+        console.error(`Request Failed - Car ${id}`, error.message);
+        throw new Error(`Request Failed - Car ${id}`);
       }
     },
   },
@@ -91,6 +120,32 @@ const resolvers = {
           error.message
         );
         throw new Error(`Request Failed - Logging In User ${email}`);
+      }
+    },
+
+    addCar: async (
+      _,
+      { make, model, year, raceNumber, odometer },
+      { user }
+    ) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const car = await Car.create({
+            make,
+            model,
+            year,
+            raceNumber,
+            odometer,
+            owner: user._id,
+          });
+          console.log(`Request Successful - Added Car:`, car);
+          return car;
+        } catch (error) {
+          console.error("Request Failed - Add Car:", error.message);
+          throw new Error("Request Failed - Add Car");
+        }
       }
     },
   },

@@ -23,3 +23,32 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_CAR = gql`
+  mutation addCar(
+    $make: String!
+    $model: String!
+    $year: Int!
+    $raceNumber: Int
+    $odometer: Int
+  ) {
+    addCar(
+      make: $make
+      model: $model
+      year: $year
+      raceNumber: $raceNumber
+      odometer: $odometer
+    ) {
+      _id
+      make
+      model
+      year
+      raceNumber
+      odometer
+      owner {
+        _id
+        email
+      }
+    }
+  }
+`;

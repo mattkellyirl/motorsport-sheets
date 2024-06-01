@@ -52,3 +52,32 @@ export const ADD_CAR = gql`
     }
   }
 `;
+
+export const ADD_EVENT = gql`
+  mutation addEvent(
+    $type: String!
+    $championship: String
+    $round: Int
+    $track: String!
+    $date: String!
+  ) {
+    addEvent(
+      type: $type
+      championship: $championship
+      round: $round
+      track: $track
+      date: $date
+    ) {
+      _id
+      type
+      championship
+      round
+      track
+      date
+      owner {
+        _id
+        email
+      }
+    }
+  }
+`;

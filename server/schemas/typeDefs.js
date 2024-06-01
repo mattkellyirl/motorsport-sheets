@@ -73,7 +73,6 @@ const typeDefs = gql`
       year: Int!
       raceNumber: Int
       odometer: Int
-      owner: ID!
     ): Car
 
     # Add a new event
@@ -83,7 +82,6 @@ const typeDefs = gql`
       round: Int!
       track: String!
       date: Date!
-      owner: ID!
     ): Event
   }
 `;

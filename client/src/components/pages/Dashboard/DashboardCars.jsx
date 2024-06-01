@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_CARS } from "../../../utils/queries";
 import NewCarModal from "../../NewCarModal";
+import CarListing from "./CarListing";
 
 function DashboardCars() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { data, refetch } = useQuery(GET_CARS);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -23,28 +27,21 @@ function DashboardCars() {
               Add Car
             </button>
           </div>
-          <div className="flex flex-row">
-            <a
-              href="#"
-              className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-            >
-              <h5 className="mb-2 text-lg font-bold tracking-tight text-black">
-                Porsche 992 GT3 Cup
-              </h5>
-              <p className="font-normal text-black">
-                <span className="font-bold">Year:</span> 2021
-              </p>
-              <p className="font-normal text-black">
-                <span className="font-bold">Race Number:</span> #12
-              </p>
-              <p className="font-normal text-black">
-                <span className="font-bold">Odometer:</span> 6,628km
-              </p>
-            </a>
-          </div>
+
+          {!data || data.cars.length === 0 ? (
+            <p className="text-md font-normal text-black">
+              You currently have no cars.
+            </p>
+          ) : (
+            <CarListing cars={data.cars} />
+          )}
         </div>
       </div>
-      <NewCarModal isOpen={isModalOpen} onClose={closeModal} />
+      <NewCarModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        refetch={refetch}
+      />
     </div>
   );
 }

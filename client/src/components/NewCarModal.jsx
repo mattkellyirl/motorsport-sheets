@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ADD_CAR } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-function NewCarModal({ isOpen, onClose }) {
+function NewCarModal({ isOpen, onClose, refetch }) {
   const [carData, setCarData] = useState({
     make: "",
     model: "",
@@ -41,6 +41,7 @@ function NewCarModal({ isOpen, onClose }) {
         odometer: "",
       });
 
+      refetch();
       onClose();
     } catch (error) {
       console.error("Request Failed - Adding New Car:", error.message);

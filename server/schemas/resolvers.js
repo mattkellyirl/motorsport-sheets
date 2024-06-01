@@ -1,7 +1,21 @@
-const User = require("../models/User");
-const Car = require("../models/Car");
+const { GraphQLScalarType, Kind } = require("graphql");
+const { User, Car, Event } = require("./models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
+
+const dateScalar = new GraphQLScalarType({
+  name: "Date",
+  description: "Custom scaler to handle event dates",
+  serialize(value) {
+    return value instanceof Date ? value.toISOString() : null;
+  },
+  parseValue(value) {
+    return typeof value === "string" ? new Date(value) : null;
+  },
+  parseLiteral(ast) {
+    return ast.kind === Kind.STRING ? new Date(ast.value) : null;
+  },
+});
 
 const resolvers = {
   Query: {
@@ -58,6 +72,35 @@ const resolvers = {
       } catch (error) {
         console.error(`Request Failed - Car ${id}`, error.message);
         throw new Error(`Request Failed - Car ${id}`);
+      }
+    },
+
+    // Get All Events
+    events: async (_, { ownerId }) => {
+      try {
+        const allEvents = await Event.find({ owner: ownerId });
+        console.log("Request Successful - All Events", allEvents);
+        return allEvents;
+      } catch (error) {
+        console.error("Request Failed - All Events", error.message);
+        throw new Error("Request Failed - All Events");
+      }
+    },
+
+    // Get Event By ID
+    event: async (_, { id }) => {
+      try {
+        const event = await Event.findById(id).populate("owner");
+        if (!event) {
+          console.error(`Request Failed - Event ${id} Not Found`);
+          throw new Error(`Request Failed - Event ${id} Not Found`);
+        } else {
+          console.log(`Request Successful - Event ${id}:`, event);
+          return event;
+        }
+      } catch (error) {
+        console.error(`Request Failed - Event ${id}`, error.message);
+        throw new Error(`Request Failed - Event ${id}`);
       }
     },
   },
@@ -145,6 +188,32 @@ const resolvers = {
         } catch (error) {
           console.error("Request Failed - Add Car:", error.message);
           throw new Error("Request Failed - Add Car");
+        }
+      }
+    },
+
+    addEvent: async (
+      _,
+      { type, championship, round, track, date },
+      { user }
+    ) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const event = await Event.create({
+            type,
+            championship,
+            round,
+            track,
+            date,
+            owner: user._id,
+          });
+          console.log(`Request Successful - Added Event:`, event);
+          return event;
+        } catch (error) {
+          console.error("Request Failed - Add Event:", error.message);
+          throw new Error("Request Failed - Add Event");
         }
       }
     },

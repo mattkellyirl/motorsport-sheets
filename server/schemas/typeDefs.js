@@ -1,6 +1,8 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  scalar Date
+
   # Define the User type
   type User {
     _id: ID
@@ -15,6 +17,17 @@ const typeDefs = gql`
     year: Int
     raceNumber: Int
     odometer: Int
+    owner: User
+  }
+
+  # Define the Event type
+  type Event {
+    _id: ID
+    type: String
+    championship: String
+    round: Int
+    track: String
+    date: Date
     owner: User
   }
 
@@ -37,6 +50,12 @@ const typeDefs = gql`
 
     # Fetch car by ID
     car(id: ID!): Car
+
+    # Fetch all events
+    events(ownerId: ID!): [Event]
+
+    # Fetch event by ID
+    event(id: ID!): Event
   }
 
   # Define the Mutation type for modifying data
@@ -54,7 +73,18 @@ const typeDefs = gql`
       year: Int!
       raceNumber: Int
       odometer: Int
+      owner: ID!
     ): Car
+
+    # Add a new event
+    addEvent(
+      type: String!
+      championship: String!
+      round: Int!
+      track: String!
+      date: Date!
+      owner: ID!
+    ): Event
   }
 `;
 

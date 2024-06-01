@@ -53,7 +53,7 @@ const typeDefs = gql`
       model: String!
       year: Int!
       raceNumber: Int
-      odometer: Float
+      odometer: Int
     ): Car
   }
 `;

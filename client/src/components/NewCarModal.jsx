@@ -1,7 +1,52 @@
-// components/CarModal.jsx
-import React from "react";
+import React, { useState } from "react";
+import { ADD_CAR } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 function NewCarModal({ isOpen, onClose }) {
+  const [carData, setCarData] = useState({
+    make: "",
+    model: "",
+    year: "",
+    raceNumber: "",
+    odometer: "",
+  });
+
+  const [addCar] = useMutation(ADD_CAR);
+
+  const handleChange = (event) => {
+    setCarData({ ...carData, [event.target.name]: event.target.value });
+  };
+
+  const handleCarSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Attempting to add new car:", carData);
+
+    try {
+      const { data } = await addCar({
+        variables: {
+          ...carData,
+          year: parseInt(carData.year),
+          raceNumber: carData.raceNumber ? parseInt(carData.raceNumber) : null,
+          odometer: carData.odometer ? parseInt(carData.odometer) : null,
+        },
+      });
+
+      console.log("Request Successful - Car Added", data);
+
+      setCarData({
+        make: "",
+        model: "",
+        year: "",
+        raceNumber: "",
+        odometer: "",
+      });
+
+      onClose();
+    } catch (error) {
+      console.error("Request Failed - Adding New Car:", error.message);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -40,7 +85,7 @@ function NewCarModal({ isOpen, onClose }) {
             </button>
           </div>
           {/* Modal body */}
-          <form className="p-4 md:p-6">
+          <form className="p-4 md:p-6" onSubmit={handleCarSubmit}>
             <div className="grid gap-4 mb-6 grid-cols-2">
               <div className="col-span-2">
                 <label
@@ -53,9 +98,11 @@ function NewCarModal({ isOpen, onClose }) {
                   type="text"
                   name="make"
                   id="make"
+                  value={carData.make}
+                  onChange={handleChange}
                   className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   placeholder="Enter vehicle make"
-                  required=""
+                  required
                 />
               </div>
 
@@ -70,15 +117,17 @@ function NewCarModal({ isOpen, onClose }) {
                   type="text"
                   name="model"
                   id="model"
+                  value={carData.model}
+                  onChange={handleChange}
                   className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   placeholder="Enter vehicle model"
-                  required=""
+                  required
                 />
               </div>
 
               <div className="col-span-2">
                 <label
-                  htmlFor="model"
+                  htmlFor="year"
                   className="block mb-2 text-sm font-semibold text-black"
                 >
                   Year
@@ -87,26 +136,29 @@ function NewCarModal({ isOpen, onClose }) {
                   type="number"
                   name="year"
                   id="year"
+                  value={carData.year}
+                  onChange={handleChange}
                   className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   placeholder="Enter vehicle year"
-                  required=""
+                  required
                 />
               </div>
 
               <div className="col-span-2">
                 <label
-                  htmlFor="number"
+                  htmlFor="raceNumber"
                   className="block mb-2 text-sm font-semibold text-black"
                 >
                   Race Number
                 </label>
                 <input
                   type="number"
-                  name="number"
-                  id="number"
+                  name="raceNumber"
+                  id="raceNumber"
+                  value={carData.raceNumber}
+                  onChange={handleChange}
                   className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   placeholder="Enter race number"
-                  required=""
                 />
               </div>
 
@@ -121,9 +173,10 @@ function NewCarModal({ isOpen, onClose }) {
                   type="number"
                   name="odometer"
                   id="odometer"
+                  value={carData.odometer}
+                  onChange={handleChange}
                   className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                   placeholder="Enter vehicle odometer"
-                  required=""
                 />
               </div>
             </div>

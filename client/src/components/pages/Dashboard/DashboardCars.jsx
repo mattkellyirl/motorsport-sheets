@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CARS } from "../../../utils/queries";
 import NewCarModal from "../../NewCarModal";
 import CarListing from "./CarListing";
+import AuthService from "../../../utils/authService";
 
 function DashboardCars() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data, refetch } = useQuery(GET_CARS);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const userProfile = AuthService.getProfile();
+    // console.log("User Profile:", userProfile);
+    setUserId(userProfile.data._id);
+  }, []);
+
+  const { data, refetch } = useQuery(GET_CARS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);

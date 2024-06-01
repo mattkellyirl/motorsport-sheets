@@ -33,9 +33,9 @@ const resolvers = {
       }
     },
     // Get All Cars
-    cars: async () => {
+    cars: async (_, { ownerId }) => {
       try {
-        const allCars = await Car.find({});
+        const allCars = await Car.find({ owner: ownerId });
         console.log("Request Successful - All Cars", allCars);
         return allCars;
       } catch (error) {

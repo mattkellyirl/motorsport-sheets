@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_CARS = gql`
-  query GetCars {
-    cars {
+  query GetCars($ownerId: ID!) {
+    cars(ownerId: $ownerId) {
       _id
       make
       model

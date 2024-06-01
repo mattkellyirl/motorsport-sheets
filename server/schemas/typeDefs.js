@@ -33,7 +33,7 @@ const typeDefs = gql`
     user(id: ID!): User
 
     # Fetch all cars
-    cars: [Car]
+    cars(ownerId: ID!): [Car]
 
     # Fetch car by ID
     car(id: ID!): Car

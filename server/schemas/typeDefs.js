@@ -40,6 +40,7 @@ const typeDefs = gql`
   # Define the Sheet type
   type Sheet {
     _id: ID
+    title: String
     event: String
     session: String
     trackCondition: String
@@ -120,6 +121,7 @@ const typeDefs = gql`
 
     # Add a new sheet
     addSheet(
+      title: String!
       event: String!
       session: String!
       trackCondition: String!

@@ -30,6 +30,7 @@ export const GET_SHEETS = gql`
   query GetSheets($ownerId: ID!) {
     sheets(ownerId: $ownerId) {
       _id
+      title
       event
       session
       trackCondition

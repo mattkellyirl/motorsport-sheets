@@ -251,6 +251,7 @@ const resolvers = {
     addSheet: async (
       _,
       {
+        title,
         event,
         session,
         trackCondition,
@@ -281,6 +282,7 @@ const resolvers = {
       } else {
         try {
           const sheet = await Sheet.create({
+            title,
             event,
             session,
             trackCondition,

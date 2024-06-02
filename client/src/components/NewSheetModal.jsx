@@ -3,12 +3,16 @@ import { ADD_SHEET } from "../utils/mutations";
 import { GET_EVENTS, GET_CARS } from "../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
 import AuthService from "../utils/authService";
+import sheetTitleGen from "../utils/sheetTitleGen";
 
 function NewSheetModal({ isOpen, onClose, refetch }) {
+  // Initialize state for userId and sheetTitle before changing state with fetched data
   const [userId, setUserId] = useState(null);
+  const [sheetTitle, setSheetTitle] = useState("");
 
   // Initialise empty form fields when component first rendered
   const [sheetData, setSheetData] = useState({
+    title: "",
     event: "",
     session: "",
     trackCondition: "",
@@ -33,28 +37,58 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
     toeRR: "",
   });
 
+  // Initialize the addSheet mutation for adding a new setup sheet
   const [addSheet] = useMutation(ADD_SHEET);
 
+  // Extract the userProfile from AuthService, and setUserId to userProfile.data._id
   useEffect(() => {
     const userProfile = AuthService.getProfile();
     // console.log("User Profile:", userProfile);
     setUserId(userProfile.data._id);
   }, []);
 
+  // Fetch event data specific to user to render in event dropdown
   const { data: eventsData } = useQuery(GET_EVENTS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
 
+  // Fetch car data specific to user to render in car dropdown
   const { data: carsData } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
 
+  // Extract data to use for custom setup sheet title from sheetData and pass it through sheetTitleGen helper to create custom setup sheet title
+  useEffect(() => {
+    if (
+      sheetData.event &&
+      sheetData.car &&
+      sheetData.session &&
+      sheetData.driver
+    ) {
+      const eventName = sheetData.event;
+      const carName = sheetData.car;
+      const sessionName = sheetData.session;
+      const driverName = sheetData.driver;
+
+      const generatedTitle = sheetTitleGen(
+        eventName,
+        carName,
+        sessionName,
+        driverName
+      );
+
+      setSheetTitle(generatedTitle);
+    }
+  }, [sheetData]);
+
+  // Automatically update sheetData based on input values in New Sheet form
   const handleChange = (event) => {
     setSheetData({ ...sheetData, [event.target.name]: event.target.value });
   };
 
+  // Handle the submission of the New Sheet form
   const handleSheetSubmit = async (event) => {
     event.preventDefault();
     console.log("Attempting to add new sheet:", sheetData);
@@ -63,6 +97,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
       const { data } = await addSheet({
         variables: {
           ...sheetData,
+          title: sheetTitle,
           trackTemp: parseInt(sheetData.trackTemp),
           tyrePressureLF: parseInt(sheetData.tyrePressureLF),
           tyrePressureRF: parseInt(sheetData.tyrePressureRF),
@@ -87,6 +122,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
 
       // Reset form fields after submission
       setSheetData({
+        title: "",
         event: "",
         session: "",
         trackCondition: "",
@@ -111,7 +147,10 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
         toeRR: "",
       });
 
+      // Refetch data to refresh the page and display the latest setup sheets
       refetch();
+
+      // Close the New Sheet Modal once form submitted
       onClose();
     } catch (error) {
       console.error("Request Failed - Adding New Sheet:", error.message);

@@ -84,6 +84,7 @@ export const ADD_EVENT = gql`
 
 export const ADD_SHEET = gql`
   mutation addSheet(
+    $title: String!
     $event: String!
     $session: String!
     $trackCondition: String!
@@ -108,6 +109,7 @@ export const ADD_SHEET = gql`
     $toeRR: Int!
   ) {
     addSheet(
+      title: $title
       event: $event
       session: $session
       trackCondition: $trackCondition
@@ -132,6 +134,7 @@ export const ADD_SHEET = gql`
       toeRR: $toeRR
     ) {
       _id
+      title
       event
       session
       trackCondition

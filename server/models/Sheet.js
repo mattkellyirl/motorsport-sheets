@@ -3,6 +3,12 @@ const { Schema } = mongoose;
 
 const sheetSchema = new Schema(
   {
+    // Sheet Title
+    title: {
+      type: String,
+      required: true,
+    },
+
     // Event, Session, Track Condition and Track Temp
     event: {
       type: String,

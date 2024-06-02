@@ -10,7 +10,7 @@ function SheetListing({ sheets }) {
           className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
         >
           <h5 className="mb-2 text-lg font-bold tracking-tight text-black">
-            Sheet Title
+            {sheet.title}
           </h5>
           <p className="font-normal text-black">
             <span className="font-bold">Car:</span> {sheet.car}

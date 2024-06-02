@@ -66,7 +66,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
       console.log("Request Successful - Sheet Added", data);
 
       // Reset form fields after submission
-      setEventData({
+      setSheetData({
         event: "",
         session: "",
         trackCondition: "",

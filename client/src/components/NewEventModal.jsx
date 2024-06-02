@@ -20,7 +20,7 @@ function NewEventModal({ isOpen, onClose, refetch }) {
       setEventData({
         type: "",
         championship: "",
-        round: 1,
+        round: "",
         track: "",
         date: "",
       });

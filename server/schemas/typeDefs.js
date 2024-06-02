@@ -9,6 +9,12 @@ const typeDefs = gql`
     email: String
   }
 
+  # Define the Auth type, which includes a token and a user
+  type Auth {
+    token: ID
+    user: User
+  }
+
   # Define the Car type
   type Car {
     _id: ID
@@ -31,10 +37,32 @@ const typeDefs = gql`
     owner: User
   }
 
-  # Define the Auth type, which includes a token and a user
-  type Auth {
-    token: ID
-    user: User
+  # Define the Sheet type
+  type Sheet {
+    _id: ID
+    event: String
+    session: String
+    trackCondition: String
+    trackTemp: Int
+    car: String
+    driver: String
+    tyrePressureLF: Int
+    tyrePressureRF: Int
+    tyrePressureLR: Int
+    tyrePressureRR: Int
+    rideHeightLF: Int
+    rideHeightRF: Int
+    rideHeightLR: Int
+    rideHeightRR: Int
+    camberLF: Int
+    camberRF: Int
+    camberLR: Int
+    camberRR: Int
+    toeLF: Int
+    toeRF: Int
+    toeLR: Int
+    toeRR: Int
+    owner: User
   }
 
   # Define the Query type for fetching data
@@ -56,6 +84,12 @@ const typeDefs = gql`
 
     # Fetch event by ID
     event(id: ID!): Event
+
+    # Fetch all sheets
+    sheets(ownerId: ID!): [Sheet]
+
+    # Fetch sheet by ID
+    sheet(id: ID!): Sheet
   }
 
   # Define the Mutation type for modifying data
@@ -83,6 +117,32 @@ const typeDefs = gql`
       track: String!
       date: Date!
     ): Event
+
+    # Add a new sheet
+    addSheet(
+      event: String!
+      session: String!
+      trackCondition: String!
+      trackTemp: Int
+      car: String!
+      driver: String!
+      tyrePressureLF: Int!
+      tyrePressureRF: Int!
+      tyrePressureLR: Int!
+      tyrePressureRR: Int!
+      rideHeightLF: Int!
+      rideHeightRF: Int!
+      rideHeightLR: Int!
+      rideHeightRR: Int!
+      camberLF: Int!
+      camberRF: Int!
+      camberLR: Int!
+      camberRR: Int!
+      toeLF: Int!
+      toeRF: Int!
+      toeLR: Int!
+      toeRR: Int!
+    ): Sheet
   }
 `;
 

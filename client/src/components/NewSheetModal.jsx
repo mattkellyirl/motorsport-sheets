@@ -1,6 +1,115 @@
-import React from "react";
+import React, { useState } from "react";
+import { ADD_SHEET } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 
-function NewSheetModal({ isOpen, onClose }) {
+function NewSheetModal({ isOpen, onClose, refetch }) {
+  // Initialise empty form fields when component first rendered
+  const [sheetData, setSheetData] = useState({
+    event: "",
+    session: "",
+    trackCondition: "",
+    trackTemp: "",
+    car: "",
+    driver: "",
+    tyrePressureLF: "",
+    tyrePressureRF: "",
+    tyrePressureLR: "",
+    tyrePressureRR: "",
+    rideHeightLF: "",
+    rideHeightRF: "",
+    rideHeightLR: "",
+    rideHeightRR: "",
+    camberLF: "",
+    camberRF: "",
+    camberLR: "",
+    camberRR: "",
+    toeLF: "",
+    toeRF: "",
+    toeLR: "",
+    toeRR: "",
+  });
+
+  const [addSheet] = useMutation(ADD_SHEET);
+
+  const handleChange = (event) => {
+    setSheetData({ ...sheetData, [event.target.name]: event.target.value });
+  };
+
+  const handleSheetSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Attempting to add new sheet:", sheetData);
+
+    try {
+      const { data } = await addSheet({
+        variables: {
+          ...sheetData,
+          trackTemp: parseInt(sheetData.trackTemp),
+          tyrePressureLF: parseInt(sheetData.tyrePressureLF),
+          tyrePressureRF: parseInt(sheetData.tyrePressureRF),
+          tyrePressureLR: parseInt(sheetData.tyrePressureLR),
+          tyrePressureRR: parseInt(sheetData.tyrePressureRR),
+          rideHeightLF: parseInt(sheetData.rideHeightLF),
+          rideHeightRF: parseInt(sheetData.rideHeightRF),
+          rideHeightLR: parseInt(sheetData.rideHeightLR),
+          rideHeightRR: parseInt(sheetData.rideHeightRR),
+          camberLF: parseInt(sheetData.camberLF),
+          camberRF: parseInt(sheetData.camberRF),
+          camberLR: parseInt(sheetData.camberLR),
+          camberRR: parseInt(sheetData.camberRR),
+          toeLF: parseInt(sheetData.toeLF),
+          toeRF: parseInt(sheetData.toeRF),
+          toeLR: parseInt(sheetData.toeLR),
+          toeRR: parseInt(sheetData.toeRR),
+        },
+      });
+
+      console.log("Request Successful - Sheet Added", data);
+
+      // Reset form fields after submission
+      setEventData({
+        event: "",
+        session: "",
+        trackCondition: "",
+        trackTemp: "",
+        car: "",
+        driver: "",
+        tyrePressureLF: "",
+        tyrePressureRF: "",
+        tyrePressureLR: "",
+        tyrePressureRR: "",
+        rideHeightLF: "",
+        rideHeightRF: "",
+        rideHeightLR: "",
+        rideHeightRR: "",
+        camberLF: "",
+        camberRF: "",
+        camberLR: "",
+        camberRR: "",
+        toeLF: "",
+        toeRF: "",
+        toeLR: "",
+        toeRR: "",
+      });
+
+      refetch();
+      onClose();
+    } catch (error) {
+      console.error("Request Failed - Adding New Sheet:", error.message);
+
+      if (error.networkError) {
+        console.error("Network Error:", error.networkError.result.errors);
+      }
+
+      if (error.graphQLErrors) {
+        error.graphQLErrors.forEach(({ message, locations, path }) => {
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          );
+        });
+      }
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -38,7 +147,7 @@ function NewSheetModal({ isOpen, onClose }) {
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <form className="p-4 md:p-6">
+          <form className="p-4 md:p-6" onSubmit={handleSheetSubmit}>
             <div className="grid grid-cols-1 gap-4 mb-6 md:grid-cols-3 md:gap-6">
               <div className="flex flex-col gap-4">
                 <div>
@@ -57,6 +166,8 @@ function NewSheetModal({ isOpen, onClose }) {
                         <select
                           name="event"
                           id="event"
+                          value={sheetData.event}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
@@ -78,6 +189,8 @@ function NewSheetModal({ isOpen, onClose }) {
                         <select
                           name="session"
                           id="session"
+                          value={sheetData.session}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
@@ -109,6 +222,8 @@ function NewSheetModal({ isOpen, onClose }) {
                         <select
                           name="track-condition"
                           id="track-condition"
+                          value={sheetData.trackCondition}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
@@ -131,6 +246,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="track-temp"
                           id="track-temp"
+                          value={sheetData.trackTemp}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter track temp"
                           required
@@ -156,6 +273,8 @@ function NewSheetModal({ isOpen, onClose }) {
                         <select
                           name="car"
                           id="car"
+                          value={sheetData.car}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
@@ -180,6 +299,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="text"
                           name="driver"
                           id="driver"
+                          value={sheetData.driver}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter driver name"
                           required
@@ -207,6 +328,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-front-pressure"
                           id="left-front-pressure"
+                          value={sheetData.tyrePressureLF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -224,6 +347,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-front-pressure"
                           id="right-front-pressure"
+                          value={sheetData.tyrePressureRF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -243,6 +368,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-rear-pressure"
                           id="left-rear-pressure"
+                          value={sheetData.tyrePressureLR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -260,6 +387,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-rear-pressure"
                           id="right-rear-pressure"
+                          value={sheetData.tyrePressureRR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter tyre pressure"
                           required
@@ -286,6 +415,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-front-height"
                           id="left-front-height"
+                          value={sheetData.rideHeightLF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -303,6 +434,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-front-height"
                           id="right-front-height"
+                          value={sheetData.rideHeightRF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -322,6 +455,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-rear-height"
                           id="left-rear-height"
+                          value={sheetData.rideHeightLR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -339,6 +474,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-rear-height"
                           id="right-rear-height"
+                          value={sheetData.rideHeightRR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter ride height"
                           required
@@ -367,6 +504,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-front-camber"
                           id="left-front-camber"
+                          value={sheetData.camberLF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
@@ -383,6 +522,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-front-camber"
                           id="right-front-camber"
+                          value={sheetData.camberRF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
@@ -401,6 +542,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-rear-camber"
                           id="left-rear-camber"
+                          value={sheetData.camberLR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
@@ -417,6 +560,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-rear-camber"
                           id="right-rear-camber"
+                          value={sheetData.camberRR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter camber setting"
                           required
@@ -442,6 +587,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-front-toe"
                           id="left-front-toe"
+                          value={sheetData.toeLF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
@@ -458,6 +605,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-front-toe"
                           id="right-front-toe"
+                          value={sheetData.toeRF}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
@@ -476,6 +625,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="left-rear-toe"
                           id="left-rear-toe"
+                          value={sheetData.toeLR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required
@@ -492,6 +643,8 @@ function NewSheetModal({ isOpen, onClose }) {
                           type="number"
                           name="right-rear-toe"
                           id="right-rear-toe"
+                          value={sheetData.toeRR}
+                          onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           placeholder="Enter toe setting"
                           required

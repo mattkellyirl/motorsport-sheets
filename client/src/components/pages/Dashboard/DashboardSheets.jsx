@@ -41,7 +41,7 @@ function DashboardSheets() {
           </div>
           {!data || data.sheets.length === 0 ? (
             <p className="text-md font-normal text-black">
-              You currently have no Sheets.
+              You currently have no sheets.
             </p>
           ) : (
             <SheetListing sheets={data.sheets} />

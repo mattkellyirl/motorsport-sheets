@@ -25,3 +25,33 @@ export const GET_EVENTS = gql`
     }
   }
 `;
+
+export const GET_SHEETS = gql`
+  query GetSheets($ownerId: ID!) {
+    sheets(ownerId: $ownerId) {
+      _id
+      event
+      session
+      trackCondition
+      trackTemp
+      car
+      driver
+      tyrePressureLF
+      tyrePressureRF
+      tyrePressureLR
+      tyrePressureRR
+      rideHeightLF
+      rideHeightRF
+      rideHeightLR
+      rideHeightRR
+      camberLF
+      camberRF
+      camberLR
+      camberRR
+      toeLF
+      toeRF
+      toeLR
+      toeRR
+    }
+  }
+`;

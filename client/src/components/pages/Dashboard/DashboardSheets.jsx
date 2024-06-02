@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_SHEETS } from "../../../utils/queries";
 import NewSheetModal from "../../NewSheetModal";
+import SheetListing from "./SheetListing";
+import AuthService from "../../../utils/authService";
 
 function DashboardSheets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const userProfile = AuthService.getProfile();
+    // console.log("User Profile:", userProfile);
+    setUserId(userProfile.data._id);
+  }, []);
+
+  const { data, refetch } = useQuery(GET_SHEETS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -23,32 +39,20 @@ function DashboardSheets() {
               Add Sheet
             </button>
           </div>
-          <div className="flex flex-row">
-            <a
-              href="#"
-              class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-            >
-              <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                PCCA-1-992-QUA-HJ
-              </h5>
-              <p class="font-normal text-black">
-                <span className="font-bold">Car:</span> Porsche 992 GT3 Cup
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Event:</span> Porsche Carrera Cup
-                Australia, Round 1
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Session:</span> Qualifying
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Driver:</span> Harri Jones
-              </p>
-            </a>
-          </div>
+          {!data || data.sheets.length === 0 ? (
+            <p className="text-md font-normal text-black">
+              You currently have no Sheets.
+            </p>
+          ) : (
+            <SheetListing sheets={data.sheets} />
+          )}
         </div>
       </div>
-      <NewSheetModal isOpen={isModalOpen} onClose={closeModal} />
+      <NewSheetModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        refetch={refetch}
+      />
     </div>
   );
 }

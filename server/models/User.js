@@ -2,18 +2,22 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 
-const userSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
-    unique: true,
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      minlength: 5,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-    minlength: 5,
-  },
-});
+
+  { timestamps: true }
+);
 
 // Hashes password before saving into database, only if password is new or has been modified
 userSchema.pre("save", async function (next) {

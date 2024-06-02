@@ -59,7 +59,7 @@ export const ADD_EVENT = gql`
     $championship: String
     $round: Int
     $track: String!
-    $date: String!
+    $date: Date!
   ) {
     addEvent(
       type: $type

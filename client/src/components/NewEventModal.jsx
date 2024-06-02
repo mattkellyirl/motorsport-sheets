@@ -1,13 +1,90 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ADD_EVENT } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 
-function NewEventModal({ isOpen, onClose }) {
+function NewEventModal({ isOpen, onClose, refetch }) {
   const [isRaceEventSelected, setIsRaceEventSelected] = useState(false);
 
-  if (!isOpen) return null;
+  // Initialise empty form fields when component first rendered
+  const [eventData, setEventData] = useState({
+    type: "",
+    championship: "",
+    round: "",
+    track: "",
+    date: "",
+  });
+
+  useEffect(() => {
+    if (!isOpen) {
+      setIsRaceEventSelected(false);
+      setEventData({
+        type: "",
+        championship: "",
+        round: 1,
+        track: "",
+        date: "",
+      });
+    }
+  }, [isOpen]);
+
+  const [addEvent] = useMutation(ADD_EVENT);
+
+  const handleChange = (event) => {
+    setEventData({ ...eventData, [event.target.name]: event.target.value });
+  };
 
   const handleEventTypeChange = (event) => {
-    setIsRaceEventSelected(event.target.value === "Race Event");
+    const { name, value } = event.target;
+    setEventData({
+      ...eventData,
+      [name]: value,
+      championship: value === "Race Event" ? "Supercars Championship" : "",
+      round: value === "Race Event" ? 1 : eventData.round,
+    });
+    setIsRaceEventSelected(value === "Race Event");
   };
+
+  const handleEventSubmit = async (event) => {
+    event.preventDefault();
+    console.log("Attempting to add new event:", eventData);
+
+    try {
+      const { data } = await addEvent({
+        variables: {
+          ...eventData,
+          round: parseInt(eventData.round),
+        },
+      });
+      console.log("Request Successful - Event Added", data);
+
+      // Reset form fields after submission
+      setEventData({
+        type: "",
+        championship: "",
+        round: "",
+        track: "",
+        date: "",
+      });
+
+      refetch();
+      onClose();
+    } catch (error) {
+      console.error("Request Failed - Adding New Event:", error.message);
+      if (error.networkError) {
+        console.error("Network Error:", error.networkError.result.errors);
+      }
+
+      if (error.graphQLErrors) {
+        error.graphQLErrors.forEach(({ message, locations, path }) => {
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          );
+        });
+      }
+    }
+  };
+
+  if (!isOpen) return null;
 
   return (
     <div
@@ -42,7 +119,7 @@ function NewEventModal({ isOpen, onClose }) {
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <form className="p-4 md:p-6">
+          <form className="p-4 md:p-6" onSubmit={handleEventSubmit}>
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="col-span-2">
                 <label
@@ -54,9 +131,10 @@ function NewEventModal({ isOpen, onClose }) {
                 <select
                   name="type"
                   id="type"
+                  value={eventData.type}
+                  onChange={handleEventTypeChange}
                   className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                   required
-                  onChange={handleEventTypeChange}
                 >
                   <option value="" disabled selected hidden>
                     Please select...
@@ -78,11 +156,12 @@ function NewEventModal({ isOpen, onClose }) {
                 <select
                   name="championship"
                   id="championship"
+                  value={eventData.championship}
+                  onChange={handleChange}
                   className={`block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 ${
                     !isRaceEventSelected ? "text-gray-400" : ""
                   }`}
-                  defaultValue="N/A"
-                  required
+                  required={isRaceEventSelected}
                   disabled={!isRaceEventSelected}
                 >
                   <option value="Supercars Championship">
@@ -103,7 +182,7 @@ function NewEventModal({ isOpen, onClose }) {
 
               <div className="col-span-2">
                 <label
-                  htmlFor="championshipRound"
+                  htmlFor="round"
                   className={`block mb-2 text-sm font-semibold ${
                     !isRaceEventSelected ? "text-gray-400" : "text-black"
                   }`}
@@ -112,13 +191,14 @@ function NewEventModal({ isOpen, onClose }) {
                 </label>
                 <input
                   type="number"
-                  name="championshipRound"
-                  id="championshipRound"
+                  name="round"
+                  id="round"
+                  value={eventData.round}
+                  onChange={handleChange}
                   className={`block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600 ${
                     !isRaceEventSelected ? "text-gray-400" : ""
                   }`}
                   placeholder="Enter championship round"
-                  defaultValue={1}
                   min={1}
                   disabled={!isRaceEventSelected}
                 />
@@ -135,6 +215,8 @@ function NewEventModal({ isOpen, onClose }) {
                   type="text"
                   name="track"
                   id="track"
+                  value={eventData.track}
+                  onChange={handleChange}
                   className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                   placeholder="Enter event track"
                   required
@@ -152,6 +234,8 @@ function NewEventModal({ isOpen, onClose }) {
                   type="date"
                   name="date"
                   id="date"
+                  value={eventData.date}
+                  onChange={handleChange}
                   className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                   required
                 />

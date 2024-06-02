@@ -39,7 +39,6 @@ function DashboardCars() {
               Add Car
             </button>
           </div>
-
           {!data || data.cars.length === 0 ? (
             <p className="text-md font-normal text-black">
               You currently have no cars.

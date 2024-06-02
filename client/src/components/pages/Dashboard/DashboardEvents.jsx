@@ -1,8 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_EVENTS } from "../../../utils/queries";
 import NewEventModal from "../../NewEventModal";
+import EventListing from "./EventListing";
+import AuthService from "../../../utils/authService";
 
 function DashboardEvents() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const userProfile = AuthService.getProfile();
+    // console.log("User Profile:", userProfile);
+    setUserId(userProfile.data._id);
+  }, []);
+
+  const { data, refetch } = useQuery(GET_EVENTS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -23,29 +39,20 @@ function DashboardEvents() {
               Add Event
             </button>
           </div>
-          <div className="flex flex-row">
-            <a
-              href="#"
-              class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-            >
-              <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                Porsche Carrera Cup Australia, Round 1
-              </h5>
-              <p class="font-normal text-black">
-                <span className="font-bold">Type:</span> Race Event
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Track:</span> The Bend Motorsport
-                Park
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Date:</span> 01/01/2024
-              </p>
-            </a>
-          </div>
+          {!data || data.events.length === 0 ? (
+            <p className="text-md font-normal text-black">
+              You currently have no events.
+            </p>
+          ) : (
+            <EventListing events={data.events} />
+          )}
         </div>
       </div>
-      <NewEventModal isOpen={isModalOpen} onClose={closeModal} />
+      <NewEventModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        refetch={refetch}
+      />
     </div>
   );
 }

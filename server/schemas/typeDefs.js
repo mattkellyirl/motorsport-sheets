@@ -78,8 +78,8 @@ const typeDefs = gql`
     # Add a new event
     addEvent(
       type: String!
-      championship: String!
-      round: Int!
+      championship: String
+      round: Int
       track: String!
       date: Date!
     ): Event

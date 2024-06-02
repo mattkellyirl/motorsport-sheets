@@ -46,6 +46,8 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
     skip: !userId,
   });
 
+  console.log(eventsData);
+
   const { data: carsData } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,
@@ -197,7 +199,9 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
 
                           {eventsData.events.map((event) => (
                             <option key={event.id} value={event.id}>
-                              {event.championship} Round {event.round}
+                              {event.championship
+                                ? `${event.championship} Round ${event.round}`
+                                : `${event.type} at ${event.track}`}
                             </option>
                           ))}
                         </select>

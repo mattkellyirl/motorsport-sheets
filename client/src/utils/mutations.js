@@ -81,3 +81,83 @@ export const ADD_EVENT = gql`
     }
   }
 `;
+
+export const ADD_SHEET = gql`
+  mutation addSheet(
+    $event: String!
+    $session: String!
+    $trackCondition: String!
+    $trackTemp: Int
+    $car: String!
+    $driver: String!
+    $tyrePressureLF: Int!
+    $tyrePressureRF: Int!
+    $tyrePressureLR: Int!
+    $tyrePressureRR: Int!
+    $rideHeightLF: Int!
+    $rideHeightRF: Int!
+    $rideHeightLR: Int!
+    $rideHeightRR: Int!
+    $camberLF: Int!
+    $camberRF: Int!
+    $camberLR: Int!
+    $camberRR: Int!
+    $toeLF: Int!
+    $toeRF: Int!
+    $toeLR: Int!
+    $toeRR: Int!
+  ) {
+    addSheet(
+      event: $event
+      session: $session
+      trackCondition: $trackCondition
+      trackTemp: $trackTemp
+      car: $car
+      driver: $driver
+      tyrePressureLF: $tyrePressureLF
+      tyrePressureRF: $tyrePressureRF
+      tyrePressureLR: $tyrePressureLR
+      tyrePressureRR: $tyrePressureRR
+      rideHeightLF: $rideHeightLF
+      rideHeightRF: $rideHeightRF
+      rideHeightLR: $rideHeightLR
+      rideHeightRR: $rideHeightRR
+      camberLF: $camberLF
+      camberRF: $camberRF
+      camberLR: $camberLR
+      camberRR: $camberRR
+      toeLF: $toeLF
+      toeRF: $toeRF
+      toeLR: $toeLR
+      toeRR: $toeRR
+    ) {
+      _id
+      event
+      session
+      trackCondition
+      trackTemp
+      car
+      driver
+      tyrePressureLF
+      tyrePressureRF
+      tyrePressureLR
+      tyrePressureRR
+      rideHeightLF
+      rideHeightRF
+      rideHeightLR
+      rideHeightRR
+      camberLF
+      camberRF
+      camberLR
+      camberRR
+      toeLF
+      toeRF
+      toeLR
+      toeRR
+      owner {
+        _id
+        email
+      }
+    }
+  }
+`;

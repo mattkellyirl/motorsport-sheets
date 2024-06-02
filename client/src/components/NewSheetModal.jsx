@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ADD_SHEET } from "../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { GET_EVENTS, GET_CARS } from "../utils/queries";
+import { useMutation, useQuery } from "@apollo/client";
+import AuthService from "../utils/authService";
 
-function NewSheetModal({ isOpen, onClose, refetch, events, cars }) {
+function NewSheetModal({ isOpen, onClose, refetch }) {
+  const [userId, setUserId] = useState(null);
+
   // Initialise empty form fields when component first rendered
   const [sheetData, setSheetData] = useState({
     event: "",
@@ -30,6 +34,22 @@ function NewSheetModal({ isOpen, onClose, refetch, events, cars }) {
   });
 
   const [addSheet] = useMutation(ADD_SHEET);
+
+  useEffect(() => {
+    const userProfile = AuthService.getProfile();
+    // console.log("User Profile:", userProfile);
+    setUserId(userProfile.data._id);
+  }, []);
+
+  const { data: eventsData } = useQuery(GET_EVENTS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
+
+  const { data: carsData } = useQuery(GET_CARS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
 
   const handleChange = (event) => {
     setSheetData({ ...sheetData, [event.target.name]: event.target.value });
@@ -175,15 +195,11 @@ function NewSheetModal({ isOpen, onClose, refetch, events, cars }) {
                             Please select...
                           </option>
 
-                          {events.map((event) => (
+                          {eventsData.events.map((event) => (
                             <option key={event.id} value={event.id}>
-                              {event.name}
+                              {event.championship} Round {event.round}
                             </option>
                           ))}
-
-                          {/* <option value="Event 1">Event 1</option>
-                          <option value="Event 2">Event 2</option>
-                          <option value="Event 3">Event 3</option> */}
                         </select>
                       </div>
                       <div className="w-1/2">
@@ -289,15 +305,11 @@ function NewSheetModal({ isOpen, onClose, refetch, events, cars }) {
                             Please select...
                           </option>
 
-                          {cars.map((car) => (
+                          {carsData.cars.map((car) => (
                             <option key={car.id} value={car.id}>
-                              {car.name}
+                              {car.make} {car.model}
                             </option>
                           ))}
-
-                          {/* <option value="Car 1">Car 1</option>
-                          <option value="Car 2">Car 2</option>
-                          <option value="Car 3">Car 3</option> */}
                         </select>
                       </div>
                     </div>

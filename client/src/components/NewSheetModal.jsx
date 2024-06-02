@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ADD_SHEET } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-function NewSheetModal({ isOpen, onClose, refetch }) {
+function NewSheetModal({ isOpen, onClose, refetch, events, cars }) {
   // Initialise empty form fields when component first rendered
   const [sheetData, setSheetData] = useState({
     event: "",
@@ -174,9 +174,16 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           <option value="" disabled selected hidden>
                             Please select...
                           </option>
-                          <option value="Event 1">Event 1</option>
+
+                          {events.map((event) => (
+                            <option key={event.id} value={event.id}>
+                              {event.name}
+                            </option>
+                          ))}
+
+                          {/* <option value="Event 1">Event 1</option>
                           <option value="Event 2">Event 2</option>
-                          <option value="Event 3">Event 3</option>
+                          <option value="Event 3">Event 3</option> */}
                         </select>
                       </div>
                       <div className="w-1/2">
@@ -281,9 +288,16 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           <option value="" disabled selected hidden>
                             Please select...
                           </option>
-                          <option value="Car 1">Car 1</option>
+
+                          {cars.map((car) => (
+                            <option key={car.id} value={car.id}>
+                              {car.name}
+                            </option>
+                          ))}
+
+                          {/* <option value="Car 1">Car 1</option>
                           <option value="Car 2">Car 2</option>
-                          <option value="Car 3">Car 3</option>
+                          <option value="Car 3">Car 3</option> */}
                         </select>
                       </div>
                     </div>

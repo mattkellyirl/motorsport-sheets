@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_SHEETS } from "../../../utils/queries";
+import { GET_SHEETS, GET_EVENTS, GET_CARS } from "../../../utils/queries";
 import NewSheetModal from "../../NewSheetModal";
 import SheetListing from "./SheetListing";
 import AuthService from "../../../utils/authService";
@@ -16,6 +16,16 @@ function DashboardSheets() {
   }, []);
 
   const { data, refetch } = useQuery(GET_SHEETS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
+
+  const { data: eventsData } = useQuery(GET_EVENTS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
+
+  const { data: carsData } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
@@ -52,6 +62,8 @@ function DashboardSheets() {
         isOpen={isModalOpen}
         onClose={closeModal}
         refetch={refetch}
+        events={eventsData ? eventsData.events : []}
+        cars={carsData ? carsData.cars : []}
       />
     </div>
   );

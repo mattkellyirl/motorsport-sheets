@@ -46,8 +46,6 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
     skip: !userId,
   });
 
-  console.log(eventsData);
-
   const { data: carsData } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,

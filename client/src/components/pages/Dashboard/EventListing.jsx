@@ -2,7 +2,7 @@ import React from "react";
 
 function EventListing({ events }) {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row flex-wrap">
       {events.map((event) => (
         <a
           key={event.id}

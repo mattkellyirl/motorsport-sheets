@@ -214,14 +214,14 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
-                          htmlFor="track-condition"
+                          htmlFor="trackCondition"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Track&nbsp;Condition
                         </label>
                         <select
-                          name="track-condition"
-                          id="track-condition"
+                          name="trackCondition"
+                          id="trackCondition"
                           value={sheetData.trackCondition}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -237,15 +237,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="track-temp"
+                          htmlFor="trackTemp"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Track&nbsp;Temp&nbsp;(°C)
                         </label>
                         <input
                           type="number"
-                          name="track-temp"
-                          id="track-temp"
+                          name="trackTemp"
+                          id="trackTemp"
                           value={sheetData.trackTemp}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -319,15 +319,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-pressure"
+                          htmlFor="tyrePressureLF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-pressure"
-                          id="left-front-pressure"
+                          name="tyrePressureLF"
+                          id="tyrePressureLF"
                           value={sheetData.tyrePressureLF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -338,15 +338,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-pressure"
+                          htmlFor="tyrePressureRF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-pressure"
-                          id="right-front-pressure"
+                          name="tyrePressureRF"
+                          id="tyrePressureRF"
                           value={sheetData.tyrePressureRF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -359,15 +359,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-pressure"
+                          htmlFor="tyrePressureLR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-pressure"
-                          id="left-rear-pressure"
+                          name="tyrePressureLR"
+                          id="tyrePressureLR"
                           value={sheetData.tyrePressureLR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -378,15 +378,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-pressure"
+                          htmlFor="tyrePressureRR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-pressure"
-                          id="right-rear-pressure"
+                          name="tyrePressureRR"
+                          id="tyrePressureRR"
                           value={sheetData.tyrePressureRR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -406,15 +406,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-height"
+                          htmlFor="rideHeightLF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-height"
-                          id="left-front-height"
+                          name="rideHeightLF"
+                          id="rideHeightLF"
                           value={sheetData.rideHeightLF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -425,15 +425,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-height"
+                          htmlFor="rideHeightRF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-height"
-                          id="right-front-height"
+                          name="rideHeightRF"
+                          id="rideHeightRF"
                           value={sheetData.rideHeightRF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -446,15 +446,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-height"
+                          htmlFor="rideHeightLR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-height"
-                          id="left-rear-height"
+                          name="rideHeightLR"
+                          id="rideHeightLR"
                           value={sheetData.rideHeightLR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -465,15 +465,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-height"
+                          htmlFor="rideHeightRR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-height"
-                          id="right-rear-height"
+                          name="rideHeightRR"
+                          id="rideHeightRR"
                           value={sheetData.rideHeightRR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -495,15 +495,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-camber"
+                          htmlFor="camberLF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-camber"
-                          id="left-front-camber"
+                          name="camberLF"
+                          id="camberLF"
                           value={sheetData.camberLF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -513,15 +513,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-camber"
+                          htmlFor="camberRF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-camber"
-                          id="right-front-camber"
+                          name="camberRF"
+                          id="camberRF"
                           value={sheetData.camberRF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -533,15 +533,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-camber"
+                          htmlFor="camberLR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-camber"
-                          id="left-rear-camber"
+                          name="camberLR"
+                          id="camberLR"
                           value={sheetData.camberLR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -551,15 +551,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-camber"
+                          htmlFor="camberRR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-camber"
-                          id="right-rear-camber"
+                          name="camberRR"
+                          id="camberRR"
                           value={sheetData.camberRR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -578,15 +578,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-4">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-front-toe"
+                          htmlFor="toeLF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Front
                         </label>
                         <input
                           type="number"
-                          name="left-front-toe"
-                          id="left-front-toe"
+                          name="toeLF"
+                          id="toeLF"
                           value={sheetData.toeLF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -596,15 +596,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-front-toe"
+                          htmlFor="toeRF"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Front
                         </label>
                         <input
                           type="number"
-                          name="right-front-toe"
-                          id="right-front-toe"
+                          name="toeRF"
+                          id="toeRF"
                           value={sheetData.toeRF}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -616,15 +616,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                     <div className="flex gap-4 mb-0">
                       <div className="w-1/2">
                         <label
-                          htmlFor="left-rear-toe"
+                          htmlFor="toeLR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Left Rear
                         </label>
                         <input
                           type="number"
-                          name="left-rear-toe"
-                          id="left-rear-toe"
+                          name="toeLR"
+                          id="toeLR"
                           value={sheetData.toeLR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
@@ -634,15 +634,15 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                       </div>
                       <div className="w-1/2">
                         <label
-                          htmlFor="right-rear-toe"
+                          htmlFor="toeRR"
                           className="block mb-2 text-sm font-semibold text-black"
                         >
                           Right Rear
                         </label>
                         <input
                           type="number"
-                          name="right-rear-toe"
-                          id="right-rear-toe"
+                          name="toeRR"
+                          id="toeRR"
                           value={sheetData.toeRR}
                           onChange={handleChange}
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"

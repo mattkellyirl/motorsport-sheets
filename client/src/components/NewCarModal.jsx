@@ -44,7 +44,17 @@ function NewCarModal({ isOpen, onClose, refetch }) {
       refetch();
       onClose();
     } catch (error) {
-      console.error("Request Failed - Adding New Car:", error.message);
+      if (error.networkError) {
+        console.error("Network Error:", error.networkError.result.errors);
+      }
+
+      if (error.graphQLErrors) {
+        error.graphQLErrors.forEach(({ message, locations, path }) => {
+          console.log(
+            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+          );
+        });
+      }
     }
   };
 

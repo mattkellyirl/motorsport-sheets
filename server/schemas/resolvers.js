@@ -1,8 +1,9 @@
 const { GraphQLScalarType, Kind } = require("graphql");
-const { User, Car, Event } = require("../models");
+const { User, Car, Event, Sheet } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
+// Custom scalar to handle Date objects in GraphQL (Used for Event Date)
 const dateScalar = new GraphQLScalarType({
   name: "Date",
   description: "Custom scaler to handle event dates",
@@ -101,6 +102,35 @@ const resolvers = {
       } catch (error) {
         console.error(`Request Failed - Event ${id}`, error.message);
         throw new Error(`Request Failed - Event ${id}`);
+      }
+    },
+
+    // Get All Sheets
+    sheets: async (_, { ownerId }) => {
+      try {
+        const allSheets = await Sheet.find({ owner: ownerId });
+        console.log("Request Successful - All Sheets", allSheets);
+        return allSheets;
+      } catch (error) {
+        console.error("Request Failed - All Sheets", error.message);
+        throw new Error("Request Failed - All Sheets");
+      }
+    },
+
+    // Get Sheet By ID
+    sheet: async (_, { id }) => {
+      try {
+        const sheet = await Sheet.findById(id).populate("owner");
+        if (!sheet) {
+          console.error(`Request Failed - Sheet ${id} Not Found`);
+          throw new Error(`Request Failed - Sheet ${id} Not Found`);
+        } else {
+          console.log(`Request Successful - Sheet ${id}:`, sheet);
+          return sheet;
+        }
+      } catch (error) {
+        console.error(`Request Failed - Sheet ${id}`, error.message);
+        throw new Error(`Request Failed - Sheet ${id}`);
       }
     },
   },
@@ -214,6 +244,72 @@ const resolvers = {
         } catch (error) {
           console.error("Request Failed - Add Event:", error.message);
           throw new Error("Request Failed - Add Event");
+        }
+      }
+    },
+
+    addSheet: async (
+      _,
+      {
+        event,
+        session,
+        trackCondition,
+        trackTemp,
+        car,
+        driver,
+        tyrePressureLF,
+        tyrePressureRF,
+        tyrePressureLR,
+        tyrePressureRR,
+        rideHeightLF,
+        rideHeightRF,
+        rideHeightLR,
+        rideHeightRR,
+        camberLF,
+        camberRF,
+        camberLR,
+        camberRR,
+        toeLF,
+        toeRF,
+        toeLR,
+        toeRR,
+      },
+      { user }
+    ) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const sheet = await Sheet.create({
+            event,
+            session,
+            trackCondition,
+            trackTemp,
+            car,
+            driver,
+            tyrePressureLF,
+            tyrePressureRF,
+            tyrePressureLR,
+            tyrePressureRR,
+            rideHeightLF,
+            rideHeightRF,
+            rideHeightLR,
+            rideHeightRR,
+            camberLF,
+            camberRF,
+            camberLR,
+            camberRR,
+            toeLF,
+            toeRF,
+            toeLR,
+            toeRR,
+            owner: user._id,
+          });
+          console.log(`Request Successful - Added Sheet:`, sheet);
+          return sheet;
+        } catch (error) {
+          console.error("Request Failed - Add Sheet:", error.message);
+          throw new Error("Request Failed - Add Sheet");
         }
       }
     },

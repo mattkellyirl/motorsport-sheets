@@ -37,7 +37,7 @@ function Footer() {
               </h2>
               <ul className="text-gray-400 font-medium">
                 <li className="mb-4">
-                  <Link to="/dashboard" className="hover:underline">
+                  <Link to="/privacy" className="hover:underline">
                     Privacy Policy
                   </Link>
                 </li>

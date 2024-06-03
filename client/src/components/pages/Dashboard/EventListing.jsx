@@ -5,7 +5,7 @@ function EventListing({ events }) {
     <div className="flex flex-row flex-wrap">
       {events.map((event) => (
         <a
-          key={event.id}
+          key={`${event.id}-${event.date}`} // Combined key of event.id and event.date, incase event.id has a duplicate
           href="#"
           className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
         >

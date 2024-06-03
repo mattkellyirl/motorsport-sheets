@@ -10,7 +10,9 @@ This application was developed as the final project for my Certificate in Full S
 
 Additionally, this application uses GraphQL, a powerful query language that enables efficient fetching and managing of data between the front and back-end.
 
-To use Motorport Sheets, navigate to this [link](https://mattkelly.netlify.app/).
+To use Motorport Sheets, navigate to this [link](https://motorsport-sheets-99499d8f02f1.herokuapp.com/).
+
+Motorsport Sheets is also available on Render, via this [link](https://motorsport-sheets.onrender.com/).
 
 ## Table of Contents
 
@@ -30,7 +32,7 @@ To install this application, clone this repository to your local machine and ins
 
 Welcome to Motorsport Sheets, the future of motorsport data!
 
-Upon visiting the [link](https://mattkelly.netlify.app/), you will taken to the Motorsport Sheets home page. Feel free to navigate the sections of the home page via the scroll links in the navigation bar:
+Upon visiting the [link](https://motorsport-sheets-99499d8f02f1.herokuapp.com/), you will taken to the Motorsport Sheets home page. Feel free to navigate the sections of the home page via the scroll links in the navigation bar:
 
 ![Home](/assets/readme/images/1.png)
 

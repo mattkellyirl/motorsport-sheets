@@ -16,7 +16,6 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// DEBUGGING
 // const server = new ApolloServer({
 //   typeDefs,
 //   resolvers,

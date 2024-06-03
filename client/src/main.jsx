@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import Home from "./components/pages/Home/Home";
-import Login from "./components/pages/Login/Login";
-import Signup from "./components/pages/Signup/Signup";
-import Dashboard from "./components/pages/Dashboard/Dashboard";
-import DashboardMain from "./components/pages/Dashboard/DashboardMain";
-import DashboardSheets from "./components/pages/Dashboard/DashboardSheets";
-import DashboardEvents from "./components/pages/Dashboard/DashboardEvents";
-import DashboardCars from "./components/pages/Dashboard/DashboardCars";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import DashboardMain from "./components/Dashboard/DashboardMain";
+import DashboardSheets from "./components/Dashboard/DashboardSheets";
+import DashboardEvents from "./components/Dashboard/DashboardEvents";
+import DashboardCars from "./components/Dashboard/DashboardCars";
 
 import "./index.css";
 

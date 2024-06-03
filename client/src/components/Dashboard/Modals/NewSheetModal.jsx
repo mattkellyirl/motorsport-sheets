@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { ADD_SHEET } from "../utils/mutations";
-import { GET_EVENTS, GET_CARS } from "../utils/queries";
+import { ADD_SHEET } from "../../../utils/mutations";
+import { GET_EVENTS, GET_CARS } from "../../../utils/queries";
 import { useMutation, useQuery } from "@apollo/client";
-import AuthService from "../utils/authService";
-import sheetTitleGen from "../utils/sheetTitleGen";
+import AuthService from "../../../utils/authService";
+import sheetTitleGen from "../../../utils/sheetTitleGen";
 
 function NewSheetModal({ isOpen, onClose, refetch }) {
   // Initialize state for userId and sheetTitle before changing state with fetched data

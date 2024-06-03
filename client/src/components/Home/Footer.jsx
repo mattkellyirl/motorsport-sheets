@@ -42,7 +42,7 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms-and-conditions" className="hover:underline">
+                  <Link to="/terms" className="hover:underline">
                     Terms &amp; Conditions
                   </Link>
                 </li>

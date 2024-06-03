@@ -1,5 +1,5 @@
 import React from "react";
-import AuthService from "../../../utils/authService";
+import AuthService from "../../utils/authService";
 import { Link, useNavigate } from "react-router-dom";
 import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
 import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";

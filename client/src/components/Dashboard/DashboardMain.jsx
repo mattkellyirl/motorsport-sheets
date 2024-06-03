@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_CARS, GET_EVENTS, GET_SHEETS } from "../../../utils/queries";
-import CarListing from "./CarListing";
-import EventListing from "./EventListing";
-import SheetListing from "./SheetListing";
-import AuthService from "../../../utils/authService";
+import { GET_CARS, GET_EVENTS, GET_SHEETS } from "../../utils/queries";
+import CarListing from "./Listings/CarListing";
+import EventListing from "./Listings/EventListing";
+import SheetListing from "./Listings/SheetListing";
+import AuthService from "../../utils/authService";
 
 function DashboardMain() {
   // Initialize state for userId before changing state with fetched data

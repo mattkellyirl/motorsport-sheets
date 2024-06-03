@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_SHEETS } from "../../../utils/queries";
-import NewSheetModal from "../../NewSheetModal";
-import SheetListing from "./SheetListing";
-import AuthService from "../../../utils/authService";
+import { GET_SHEETS } from "../../utils/queries";
+import NewSheetModal from "./Modals/NewSheetModal";
+import SheetListing from "./Listings/SheetListing";
+import AuthService from "../../utils/authService";
 
 function DashboardSheets() {
   const [isModalOpen, setIsModalOpen] = useState(false);

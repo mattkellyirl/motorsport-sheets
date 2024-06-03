@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ADD_EVENT } from "../utils/mutations";
+import { ADD_EVENT } from "../../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 function NewEventModal({ isOpen, onClose, refetch }) {

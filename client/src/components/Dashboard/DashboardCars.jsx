@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_CARS } from "../../../utils/queries";
-import NewCarModal from "../../NewCarModal";
-import CarListing from "./CarListing";
-import AuthService from "../../../utils/authService";
+import { GET_CARS } from "../../utils/queries";
+import NewCarModal from "./Modals/NewCarModal";
+import CarListing from "./Listings/CarListing";
+import AuthService from "../../utils/authService";
 
 function DashboardCars() {
   const [isModalOpen, setIsModalOpen] = useState(false);

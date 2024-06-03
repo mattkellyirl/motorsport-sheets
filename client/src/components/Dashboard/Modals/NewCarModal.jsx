@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ADD_CAR } from "../utils/mutations";
+import { ADD_CAR } from "../../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 function NewCarModal({ isOpen, onClose, refetch }) {

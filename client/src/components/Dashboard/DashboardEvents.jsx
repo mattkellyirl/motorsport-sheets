@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_EVENTS } from "../../../utils/queries";
-import NewEventModal from "../../NewEventModal";
-import EventListing from "./EventListing";
-import AuthService from "../../../utils/authService";
+import { GET_EVENTS } from "../../utils/queries";
+import NewEventModal from "./Modals/NewEventModal";
+import EventListing from "./Listings/EventListing";
+import AuthService from "../../utils/authService";
 
 function DashboardEvents() {
   const [isModalOpen, setIsModalOpen] = useState(false);

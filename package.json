@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "seed": "npm run seed --prefix server",
-    "install": "cd server && npm i && cd ../client && npm i --production=true",
+    "install": "cd server && npm i && cd ../client && npm i ",
     "build": "npm run build --prefix client",
     "install-client": "npm install --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"

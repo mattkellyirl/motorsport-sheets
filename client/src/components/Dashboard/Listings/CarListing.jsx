@@ -7,7 +7,7 @@ function CarListing({ cars }) {
         <a
           key={`${car.id}-${car.raceNumber}`} // Combined key of car.id and car.raceNumber, incase car.id is a duplicate
           href="#"
-          className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
+          className="block max-w-sm p-4 mr-4 mb-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
         >
           <h5 className="mb-2 text-lg font-bold tracking-tight text-black">
             {car.make} {car.model}

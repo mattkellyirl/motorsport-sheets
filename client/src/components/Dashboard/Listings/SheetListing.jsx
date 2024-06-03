@@ -7,7 +7,7 @@ function SheetListing({ sheets }) {
         <a
           key={`${sheet.id}-${sheet.event}-${sheet.session}`} // Combined key of sheet.id, sheet.event, sheet.session, incase sheet.id has a duplicate
           href="#"
-          className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
+          className="block max-w-sm p-4 mr-4 mb-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
         >
           <h5 className="mb-2 text-lg font-bold tracking-tight text-black">
             {sheet.title}

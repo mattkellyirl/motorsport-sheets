@@ -10,7 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 // Create an HTTP link to the GraphQL endpoint
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql", // Adjust this URL to match your GraphQL server
+  uri: process.env.MONGODB_URI, // Adjust this URL to match your GraphQL server
 });
 
 // Set up authentication middleware

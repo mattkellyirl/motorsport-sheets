@@ -33,7 +33,7 @@ const server = new ApolloServer({
 // Apply CORS middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://motorsport-sheets-6b6724ad9a1f.herokuapp.com/",
   })
 );
 

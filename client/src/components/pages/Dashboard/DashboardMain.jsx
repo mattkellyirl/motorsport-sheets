@@ -1,102 +1,89 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_CARS, GET_EVENTS, GET_SHEETS } from "../../../utils/queries";
+import CarListing from "./CarListing";
+import EventListing from "./EventListing";
+import SheetListing from "./SheetListing";
+import AuthService from "../../../utils/authService";
 
 function DashboardMain() {
+  // Initialize state for userId before changing state with fetched data
+  const [userId, setUserId] = useState(null);
+
+  // Extract the userProfile from AuthService, and setUserId to userProfile.data._id
+  useEffect(() => {
+    const userProfile = AuthService.getProfile();
+    // console.log("User Profile:", userProfile);
+    setUserId(userProfile.data._id);
+  }, []);
+
+  // Fetch car data specific to user to render carListing
+  const { data: carsData } = useQuery(GET_CARS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
+
+  // Fetch event data specific to user to render eventListing
+  const { data: eventsData } = useQuery(GET_EVENTS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
+
+  // Fetch sheet data specific to user to render sheetListing
+  const { data: sheetsData } = useQuery(GET_SHEETS, {
+    variables: { ownerId: userId },
+    skip: !userId,
+  });
+
   return (
     <div className="p-4 sm:ml-64">
       <div className="p-4 border-2 border-gray-200 border-solid rounded-lg">
+        {/* Car Listing: */}
         <div className="flex flex-col p-4 h-auto rounded bg-gray-100">
-          <p className="text-xl font-bold tracking-tight text-black mb-2">
-            Recent Setup Sheets:
-          </p>
-          {/* <p className="text-md font-normal text-black">
-            You currently have no setup sheets. Click on the
-            <span className="font-semibold"> Your Sheets</span> button to add
-            one.
-          </p> */}
-          <div className="flex flex-row">
-            <a
-              href="#"
-              class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-            >
-              <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                PCCA-1-992-QUA-HJ
-              </h5>
-              <p class="font-normal text-black">
-                <span className="font-bold">Car:</span> Porsche 992 GT3 Cup
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Event:</span> Porsche Carrera Cup
-                Australia, Round 1
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Session:</span> Qualifying
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Driver:</span> Harri Jones
-              </p>
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col mt-4 p-4 h-auto rounded bg-gray-100">
           <p className="text-xl font-bold tracking-tight text-black mb-2">
             Recent Cars:
           </p>
-          {/* <p className="text-md font-normal text-black">
-            You currently have no cars. Click on the
-            <span className="font-semibold"> Your Cars</span> button to add one.
-          </p> */}
-
-          <div className="flex flex-row">
-            <a
-              href="#"
-              class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-            >
-              <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                Porsche 992 GT3 Cup
-              </h5>
-              <p class="font-normal text-black">
-                <span className="font-bold">Year:</span> 2021
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Odometer:</span> 6,628km
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Race Number:</span> #12
-              </p>
-            </a>
-          </div>
+          {!carsData || carsData.cars.length === 0 ? (
+            <p className="text-md font-normal text-black">
+              You currently have no cars. Click on the
+              <span className="font-semibold"> Your Cars</span> button to add
+              one.
+            </p>
+          ) : (
+            <CarListing cars={carsData.cars} />
+          )}
         </div>
 
+        {/* Event Listing: */}
         <div className="flex flex-col mt-4 p-4 h-auto rounded bg-gray-100">
           <p className="text-xl font-bold tracking-tight text-black mb-2">
             Recent Events:
           </p>
-          {/* <p className="text-md font-normal text-black">
-            You currently have no events. Click on the
-            <span className="font-semibold"> Your Events</span> button to add one.
-          </p> */}
+          {!eventsData || eventsData.events.length === 0 ? (
+            <p className="text-md font-normal text-black">
+              You currently have no events. Click on the
+              <span className="font-semibold"> Your Events</span> button to add
+              one.
+            </p>
+          ) : (
+            <EventListing events={eventsData.events} />
+          )}
+        </div>
 
-          <div className="flex flex-row">
-            <a
-              href="#"
-              class="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-            >
-              <h5 class="mb-2 text-lg font-bold tracking-tight text-black">
-                Porsche Carrera Cup Australia, Round 1
-              </h5>
-              <p class="font-normal text-black">
-                <span className="font-bold">Type:</span> Race Event
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Track:</span> The Bend Motorsport
-                Park
-              </p>
-              <p class="font-normal text-black">
-                <span className="font-bold">Date:</span> 01/01/2024
-              </p>
-            </a>
-          </div>
+        {/* Sheet Listing: */}
+        <div className="flex flex-col mt-4 p-4 h-auto rounded bg-gray-100">
+          <p className="text-xl font-bold tracking-tight text-black mb-2">
+            Recent Setup Sheets:
+          </p>
+          {!sheetsData || sheetsData.sheets.length === 0 ? (
+            <p className="text-md font-normal text-black">
+              You currently have no setup sheets. Click on the
+              <span className="font-semibold"> Your Sheets</span> button to add
+              one.
+            </p>
+          ) : (
+            <SheetListing sheets={sheetsData.sheets} />
+          )}
         </div>
       </div>
     </div>

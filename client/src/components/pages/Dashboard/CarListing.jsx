@@ -5,7 +5,7 @@ function CarListing({ cars }) {
     <div className="flex flex-row flex-wrap">
       {cars.map((car) => (
         <a
-          key={car.id}
+          key={`${car.id}-${car.raceNumber}`} // Combined key of car.id and car.raceNumber, incase car.id is a duplicate
           href="#"
           className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
         >

@@ -16,6 +16,7 @@ const server = new ApolloServer({
   resolvers,
 });
 
+// DEBUGGING
 // const server = new ApolloServer({
 //   typeDefs,
 //   resolvers,
@@ -32,10 +33,7 @@ const server = new ApolloServer({
 // Apply CORS middleware
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? "https://motorsport-sheets-6b6724ad9a1f.herokuapp.com"
-        : "http://localhost:5173",
+    origin: "http://localhost:5173",
   })
 );
 

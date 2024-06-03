@@ -10,7 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 
 // Create an HTTP link to the GraphQL endpoint
 const httpLink = createHttpLink({
-  uri: import.meta.env.VITE_GRAPHQL_ENDPOINT || "http://localhost:3001/graphql", // Use environment variable or fallback to localhost
+  uri: "http://localhost:3001/graphql", // Adjust this URL to match your GraphQL server
 });
 
 // Set up authentication middleware

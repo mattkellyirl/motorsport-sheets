@@ -230,7 +230,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
-                          <option value="" disabled selected hidden>
+                          <option value="" disabled hidden>
                             Please select...
                           </option>
 
@@ -258,7 +258,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
-                          <option value="" disabled selected hidden>
+                          <option value="" disabled hidden>
                             Please select...
                           </option>
                           <option value="Practice 1">Practice 1</option>
@@ -291,7 +291,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
-                          <option value="" disabled selected hidden>
+                          <option value="" disabled hidden>
                             Please select...
                           </option>
                           <option value="Dry">Dry</option>
@@ -342,7 +342,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           className="block w-full p-2.5 text-sm text-black bg-gray-50 border border-gray-300 rounded-lg focus:ring-primary-600 focus:border-primary-600"
                           required
                         >
-                          <option value="" disabled selected hidden>
+                          <option value="" disabled hidden>
                             Please select...
                           </option>
 

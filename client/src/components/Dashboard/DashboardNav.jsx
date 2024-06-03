@@ -50,7 +50,7 @@ function DashboardNav() {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100">
-          <Link to="/">
+          <Link to="/dashboard">
             <div className="flex justify-center pl-2.5 mb-5">
               <img src={logo} alt="Motorsport Sheets" className="h-12" />
             </div>

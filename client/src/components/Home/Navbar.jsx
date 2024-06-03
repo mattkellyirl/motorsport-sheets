@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 import { Link } from "react-router-dom";
-import logo from "/motorsport-sheets.png";
+import logo from "../../../assets/motorsport-sheets.png";
 
 function Navbar() {
   return (

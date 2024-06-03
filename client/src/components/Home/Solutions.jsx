@@ -1,6 +1,6 @@
 import React from "react";
-import dataImg from "/data.jpg";
-import vehicleSetupImg from "/vehicle-setup.png";
+import dataImg from "../../../assets/data.jpg";
+import vehicleSetupImg from "../../../assets/vehicle-setup.png";
 
 function Solutions() {
   return (

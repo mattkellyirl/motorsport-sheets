@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "/motorsport-sheets.png";
+import logo from "../../../assets/motorsport-sheets.png";
 import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 function Footer() {

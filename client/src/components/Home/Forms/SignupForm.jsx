@@ -3,7 +3,7 @@ import AuthService from "../../../utils/authService";
 import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../../utils/mutations";
-import logo from "/motorsport-sheets.png";
+import logo from "../../../../assets/motorsport-sheets.png";
 
 function SignupForm() {
   const [email, setEmail] = useState("");

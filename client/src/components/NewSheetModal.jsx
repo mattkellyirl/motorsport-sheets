@@ -235,7 +235,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           </option>
 
                           {eventsData.events.map((event) => (
-                            <option key={event.id} value={event.id}>
+                            <option key={`${event.id}-${event.date}`}>
                               {event.championship
                                 ? `${event.championship} Round ${event.round}`
                                 : `${event.type} at ${event.track}`}
@@ -347,7 +347,10 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           </option>
 
                           {carsData.cars.map((car) => (
-                            <option key={car.id} value={car.id}>
+                            <option
+                              key={`${car.id}-${car.raceNumber}`}
+                              value={car.id}
+                            >
                               {car.make} {car.model}
                             </option>
                           ))}

@@ -5,7 +5,7 @@ function SheetListing({ sheets }) {
     <div className="flex flex-row flex-wrap">
       {sheets.map((sheet) => (
         <a
-          key={sheet.id}
+          key={`${sheet.id}-${sheet.event}-${sheet.session}`} // Combined key of sheet.id, sheet.event, sheet.session, incase sheet.id has a duplicate
           href="#"
           className="block max-w-sm p-4 mr-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
         >

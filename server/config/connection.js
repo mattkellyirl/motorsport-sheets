@@ -7,9 +7,6 @@ const MONGODB_URI =
     : process.env.MONGODB_URI_DEV;
 
 // Connect to MongoDB using MONGODB_URI
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(MONGODB_URI);
 
 module.exports = mongoose.connection;

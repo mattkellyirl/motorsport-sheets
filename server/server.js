@@ -16,24 +16,16 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// DEBUGGING
-// const server = new ApolloServer({
-//   typeDefs,
-//   resolvers,
-//   formatError: (err) => {
-//     console.error("GraphQL Error:", err);
-//     return err;
-//   },
-//   formatResponse: (response) => {
-//     console.log("GraphQL Response:", response);
-//     return response;
-//   },
-// });
+// Define CORS origin URL from environment variables
+const corsOrigin =
+  process.env.NODE_ENV === "production"
+    ? "https://motorsport-sheets-6b6724ad9a1f.herokuapp.com/"
+    : "http://localhost:5173";
 
-// Apply CORS middleware
+// Apply CORS middleware with corsOrigin URL
 app.use(
   cors({
-    origin: "https://motorsport-sheets-6b6724ad9a1f.herokuapp.com/",
+    origin: corsOrigin,
   })
 );
 
@@ -61,19 +53,6 @@ const startApolloServer = async () => {
       context: ({ req }) => authMiddleware({ req }),
     })
   );
-
-  //test
-  // DEBUGGING
-  // app.use(
-  //   "/graphql",
-  //   expressMiddleware(server, {
-  //     context: ({ req }) => {
-  //       const modifiedReq = authMiddleware({ req });
-  //       console.log("Received request:", modifiedReq.body);
-  //       return { req: modifiedReq };
-  //     },
-  //   })
-  // );
 
   // Serve the React app in production
   if (process.env.NODE_ENV === "production") {

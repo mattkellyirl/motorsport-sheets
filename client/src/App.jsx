@@ -8,9 +8,15 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+// Define GraphQL endpoint URL from environment variables
+const endpointURL =
+  process.env.NODE_ENV === "production"
+    ? "https://motorsport-sheets-6b6724ad9a1f.herokuapp.com/graphql"
+    : "http://localhost:3001/graphql";
+
 // Create an HTTP link to the GraphQL endpoint
 const httpLink = createHttpLink({
-  uri: process.env.MONGODB_URI, // Adjust this URL to match your GraphQL server
+  uri: endpointURL,
 });
 
 // Set up authentication middleware

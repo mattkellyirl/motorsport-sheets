@@ -1,31 +1,15 @@
 const mongoose = require("mongoose");
 
-// Connect to MongoDB using the URI from environment variables or fallback to a local database
-mongoose.connect(process.env.MONGODB_URI);
+// Define MONGODB_URI from environment variables
+const MONGODB_URI =
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGODB_URI_PROD
+    : process.env.MONGODB_URI_DEV;
 
-// DEBUGGING
-// mongoose
-//   .connect(
-//     process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/motorsport_sheets",
-//     {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//     }
-//   )
-//   .then(() => {
-//     console.log("Successfully connected to MongoDB");
-//   })
-//   .catch((err) => {
-//     console.error("Error connecting to MongoDB:", err);
-//   });
-
-// const db = mongoose.connection;
-
-// db.on("error", console.error.bind(console, "MongoDB connection error:"));
-// db.once("open", function () {
-//   console.log("Connected to MongoDB");
-// });
-
-// module.exports = db;
+// Connect to MongoDB using MONGODB_URI
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 module.exports = mongoose.connection;

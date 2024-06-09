@@ -145,6 +145,15 @@ const typeDefs = gql`
       toeLR: Int!
       toeRR: Int!
     ): Sheet
+
+    # Delete car by ID
+    deleteCar(id: ID!): Car
+
+    # Delete event by ID
+    deleteEvent(id: ID!): Event
+
+    # Delete sheet by ID
+    deleteSheet(id: ID!): Sheet
   }
 `;
 

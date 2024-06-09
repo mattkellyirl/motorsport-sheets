@@ -196,6 +196,7 @@ const resolvers = {
       }
     },
 
+    // Add Car
     addCar: async (
       _,
       { make, model, year, raceNumber, odometer },
@@ -222,6 +223,26 @@ const resolvers = {
       }
     },
 
+    // Delete Car
+    deleteCar: async (_, { id }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const car = await Car.findByIdAndDelete(id);
+          if (!car) {
+            throw new Error("Car not found");
+          }
+          console.log(`Request Successful - Deleted Car:`, car);
+          return car;
+        } catch (error) {
+          console.error("Request Failed - Delete Car:", error.message);
+          throw new Error("Request Failed - Delete Car");
+        }
+      }
+    },
+
+    // Add Event
     addEvent: async (
       _,
       { type, championship, round, track, date },
@@ -248,6 +269,26 @@ const resolvers = {
       }
     },
 
+    // Delete Event
+    deleteEvent: async (_, { id }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const event = await Event.findByIdAndDelete(id);
+          if (!event) {
+            throw new Error("Event not found");
+          }
+          console.log(`Request Successful - Deleted Event:`, event);
+          return event;
+        } catch (error) {
+          console.error("Request Failed - Delete Event:", error.message);
+          throw new Error("Request Failed - Delete Event");
+        }
+      }
+    },
+
+    // Add Sheet
     addSheet: async (
       _,
       {
@@ -312,6 +353,25 @@ const resolvers = {
         } catch (error) {
           console.error("Request Failed - Add Sheet:", error.message);
           throw new Error("Request Failed - Add Sheet");
+        }
+      }
+    },
+
+    // Delete Sheet
+    deleteSheet: async (_, { id }, { user }) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const sheet = await Sheet.findByIdAndDelete(id);
+          if (!sheet) {
+            throw new Error("Sheet not found");
+          }
+          console.log(`Request Successful - Deleted Sheet:`, sheet);
+          return sheet;
+        } catch (error) {
+          console.error("Request Failed - Delete Sheet:", error.message);
+          throw new Error("Request Failed - Delete Sheet");
         }
       }
     },

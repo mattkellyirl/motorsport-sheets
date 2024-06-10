@@ -16,7 +16,7 @@ function DashboardCars() {
   }, []);
 
   // Retrieve user car data
-  const { data, refetch } = useQuery(GET_CARS, {
+  const { data: carsData, refetch: refetchCars } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
@@ -40,19 +40,19 @@ function DashboardCars() {
               Add Car
             </button>
           </div>
-          {!data || data.cars.length === 0 ? (
+          {!carsData || carsData.cars.length === 0 ? (
             <p className="text-md font-normal text-black">
               You currently have no cars.
             </p>
           ) : (
-            <CarListing cars={data.cars} refetch={refetch} /> // Pass cars to carListing for rendering car data and refetch to handleDelete function
+            <CarListing cars={carsData.cars} refetch={refetchCars} /> // Pass cars to carListing for rendering car data and refetch to handleDelete function
           )}
         </div>
       </div>
       <NewCarModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        refetch={refetch}
+        refetch={refetchCars}
       />
     </div>
   );

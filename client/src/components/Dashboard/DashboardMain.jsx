@@ -18,19 +18,19 @@ function DashboardMain() {
   }, []);
 
   // Fetch car data specific to user to render carListing
-  const { data: carsData } = useQuery(GET_CARS, {
+  const { data: carsData, refetch: refetchCars } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
 
   // Fetch event data specific to user to render eventListing
-  const { data: eventsData } = useQuery(GET_EVENTS, {
+  const { data: eventsData, refetch: refetchEvents } = useQuery(GET_EVENTS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
 
   // Fetch sheet data specific to user to render sheetListing
-  const { data: sheetsData } = useQuery(GET_SHEETS, {
+  const { data: sheetsData, refetch: refetchSheets } = useQuery(GET_SHEETS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
@@ -50,7 +50,7 @@ function DashboardMain() {
               one.
             </p>
           ) : (
-            <CarListing cars={carsData.cars} />
+            <CarListing cars={carsData.cars} refetch={refetchCars} />
           )}
         </div>
 
@@ -66,7 +66,7 @@ function DashboardMain() {
               one.
             </p>
           ) : (
-            <EventListing events={eventsData.events} />
+            <EventListing events={eventsData.events} refetch={refetchEvents} />
           )}
         </div>
 
@@ -82,7 +82,7 @@ function DashboardMain() {
               one.
             </p>
           ) : (
-            <SheetListing sheets={sheetsData.sheets} />
+            <SheetListing sheets={sheetsData.sheets} refetch={refetchSheets} />
           )}
         </div>
       </div>

@@ -66,27 +66,26 @@ function DropdownMenu({ dataID, dataType, refetch }) {
     >
       <ul className="py-1 text-sm font-semibold text-black">
         <li>
-          <a href="#" className="flex items-center px-4 py-2 hover:bg-gray-100">
+          <button className="flex items-center px-4 py-2 hover:bg-gray-100 w-full">
             <MdRemoveRedEye className="mr-4" />
             View
-          </a>
+          </button>
         </li>
         <li>
-          <a href="#" className="flex items-center px-4 py-2 hover:bg-gray-100">
+          <button className="flex items-center px-4 py-2 hover:bg-gray-100 w-full">
             <MdEdit className="mr-4" />
             Edit
-          </a>
+          </button>
         </li>
       </ul>
       <div className="text-sm font-semibold py-1">
-        <a
-          href="#"
+        <button
           onClick={handleDelete}
-          className="flex items-center px-4 py-2 text-red-600 hover:text-white hover:bg-red-600"
+          className="flex items-center px-4 py-2 text-red-600 hover:text-white hover:bg-red-600 w-full"
         >
           <TiDelete className="mr-4" />
           Delete
-        </a>
+        </button>
       </div>
     </div>
   );

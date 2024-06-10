@@ -1,8 +1,25 @@
+const { GraphQLScalarType, Kind } = require("graphql");
 const { User, Car, Event, Sheet } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
+// Custom scalar to handle Date objects in GraphQL (Used for Event Date)
+const dateScalar = new GraphQLScalarType({
+  name: "Date",
+  description: "Custom scalar to handle event dates",
+  serialize(value) {
+    return value instanceof Date ? value.toISOString() : null;
+  },
+  parseValue(value) {
+    return typeof value === "string" ? new Date(value) : null;
+  },
+  parseLiteral(ast) {
+    return ast.kind === Kind.STRING ? new Date(ast.value) : null;
+  },
+});
+
 const resolvers = {
+  Date: dateScalar,
   Query: {
     // Get All Users
     users: async () => {

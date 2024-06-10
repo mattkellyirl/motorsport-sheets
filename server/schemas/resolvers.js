@@ -1,22 +1,6 @@
-const { GraphQLScalarType, Kind } = require("graphql");
 const { User, Car, Event, Sheet } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
-
-// Custom scalar to handle Date objects in GraphQL (Used for Event Date)
-const dateScalar = new GraphQLScalarType({
-  name: "Date",
-  description: "Custom scaler to handle event dates",
-  serialize(value) {
-    return value instanceof Date ? value.toISOString() : null;
-  },
-  parseValue(value) {
-    return typeof value === "string" ? new Date(value) : null;
-  },
-  parseLiteral(ast) {
-    return ast.kind === Kind.STRING ? new Date(ast.value) : null;
-  },
-});
 
 const resolvers = {
   Query: {
@@ -223,6 +207,33 @@ const resolvers = {
       }
     },
 
+    // Edit Car
+    editCar: async (
+      _,
+      { _id, make, model, year, raceNumber, odometer },
+      { user }
+    ) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const car = await Car.findByIdAndUpdate(
+            _id,
+            { make, model, year, raceNumber, odometer },
+            { new: true }
+          );
+          if (!car) {
+            throw new Error(`Car ${_id} Not Found`);
+          }
+          console.log("Request Successful - Edited Car:", car);
+          return car;
+        } catch (error) {
+          console.error("Request Failed - Edit Car:", error.message);
+          throw new Error("Request Failed - Edit Car");
+        }
+      }
+    },
+
     // Delete Car
     deleteCar: async (_, { _id }, { user }) => {
       if (!user) {
@@ -265,6 +276,33 @@ const resolvers = {
         } catch (error) {
           console.error("Request Failed - Add Event:", error.message);
           throw new Error("Request Failed - Add Event");
+        }
+      }
+    },
+
+    // Edit Event
+    editEvent: async (
+      _,
+      { _id, type, championship, round, track, date },
+      { user }
+    ) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const event = await Event.findByIdAndUpdate(
+            _id,
+            { type, championship, round, track, date },
+            { new: true }
+          );
+          if (!event) {
+            throw new Error(`Event ${_id} Not Found`);
+          }
+          console.log("Request Successful - Edited Event:", event);
+          return event;
+        } catch (error) {
+          console.error("Request Failed - Edit Event:", error.message);
+          throw new Error("Request Failed - Edit Event");
         }
       }
     },
@@ -353,6 +391,82 @@ const resolvers = {
         } catch (error) {
           console.error("Request Failed - Add Sheet:", error.message);
           throw new Error("Request Failed - Add Sheet");
+        }
+      }
+    },
+
+    // Edit Sheet
+    editSheet: async (
+      _,
+      {
+        _id,
+        title,
+        event,
+        session,
+        trackCondition,
+        trackTemp,
+        car,
+        driver,
+        tyrePressureLF,
+        tyrePressureRF,
+        tyrePressureLR,
+        tyrePressureRR,
+        rideHeightLF,
+        rideHeightRF,
+        rideHeightLR,
+        rideHeightRR,
+        camberLF,
+        camberRF,
+        camberLR,
+        camberRR,
+        toeLF,
+        toeRF,
+        toeLR,
+        toeRR,
+      },
+      { user }
+    ) => {
+      if (!user) {
+        throw new AuthenticationError("User Not Logged In");
+      } else {
+        try {
+          const sheet = await Sheet.findByIdAndUpdate(
+            _id,
+            {
+              title,
+              event,
+              session,
+              trackCondition,
+              trackTemp,
+              car,
+              driver,
+              tyrePressureLF,
+              tyrePressureRF,
+              tyrePressureLR,
+              tyrePressureRR,
+              rideHeightLF,
+              rideHeightRF,
+              rideHeightLR,
+              rideHeightRR,
+              camberLF,
+              camberRF,
+              camberLR,
+              camberRR,
+              toeLF,
+              toeRF,
+              toeLR,
+              toeRR,
+            },
+            { new: true }
+          );
+          if (!sheet) {
+            throw new Error(`Sheet ${_id} Not Found`);
+          }
+          console.log("Request Successful - Edited Sheet:", sheet);
+          return sheet;
+        } catch (error) {
+          console.error("Request Failed - Edit Sheet:", error.message);
+          throw new Error("Request Failed - Edit Sheet");
         }
       }
     },

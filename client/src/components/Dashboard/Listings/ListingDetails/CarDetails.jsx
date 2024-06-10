@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MdMoreVert } from "react-icons/md";
 import DropdownMenu from "../../Dropdowns/DropdownMenu";
 
-const CarDetails = ({ car }) => {
+const CarDetails = ({ car, refetch }) => {
   // Initialize isDropdownOpen to false and setIsDropdownOpen as the function to update it
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -25,7 +25,9 @@ const CarDetails = ({ car }) => {
           <MdMoreVert className="text-2xl" />
 
           {/* If isDropdownOpen is true, render DropdownMenu */}
-          {isDropdownOpen && <DropdownMenu />}
+          {isDropdownOpen && (
+            <DropdownMenu dataID={car._id} dataType="car" refetch={refetch} /> // Pass dataID, dataType and refetch query to dropdownMenu for handleDelete function
+          )}
         </div>
       </div>
       <p className="font-normal text-black">

@@ -9,12 +9,13 @@ function DashboardCars() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState(null);
 
+  // Retrieve user profile
   useEffect(() => {
     const userProfile = AuthService.getProfile();
-    // console.log("User Profile:", userProfile);
     setUserId(userProfile.data._id);
   }, []);
 
+  // Retrieve user car data
   const { data, refetch } = useQuery(GET_CARS, {
     variables: { ownerId: userId },
     skip: !userId,
@@ -44,7 +45,7 @@ function DashboardCars() {
               You currently have no cars.
             </p>
           ) : (
-            <CarListing cars={data.cars} />
+            <CarListing cars={data.cars} refetch={refetch} /> // Pass cars to carListing for rendering car data and refetch to handleDelete function
           )}
         </div>
       </div>

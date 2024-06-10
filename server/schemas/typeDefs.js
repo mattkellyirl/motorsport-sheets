@@ -72,25 +72,25 @@ const typeDefs = gql`
     users: [User]
 
     # Fetch user by ID
-    user(id: ID!): User
+    user(_id: ID!): User
 
     # Fetch all cars
     cars(ownerId: ID!): [Car]
 
     # Fetch car by ID
-    car(id: ID!): Car
+    car(_id: ID!): Car
 
     # Fetch all events
     events(ownerId: ID!): [Event]
 
     # Fetch event by ID
-    event(id: ID!): Event
+    event(_id: ID!): Event
 
     # Fetch all sheets
     sheets(ownerId: ID!): [Sheet]
 
     # Fetch sheet by ID
-    sheet(id: ID!): Sheet
+    sheet(_id: ID!): Sheet
   }
 
   # Define the Mutation type for modifying data
@@ -147,13 +147,61 @@ const typeDefs = gql`
     ): Sheet
 
     # Delete car by ID
-    deleteCar(id: ID!): Car
+    deleteCar(_id: ID!): Car
 
     # Delete event by ID
-    deleteEvent(id: ID!): Event
+    deleteEvent(_id: ID!): Event
 
     # Delete sheet by ID
-    deleteSheet(id: ID!): Sheet
+    deleteSheet(_id: ID!): Sheet
+
+    # Edit car by ID
+    editCar(
+      _id: ID!
+      make: String!
+      model: String!
+      year: Int!
+      raceNumber: Int
+      odometer: Int
+    ): Car
+
+    # Edit event by ID
+    editEvent(
+      _id: ID!
+      type: String!
+      championship: String
+      round: Int
+      track: String!
+      date: Date!
+    ): Event
+
+    # Edit sheet by ID
+    editSheet(
+      _id: ID!
+      title: String!
+      event: String!
+      session: String!
+      trackCondition: String!
+      trackTemp: Int
+      car: String!
+      driver: String!
+      tyrePressureLF: Int!
+      tyrePressureRF: Int!
+      tyrePressureLR: Int!
+      tyrePressureRR: Int!
+      rideHeightLF: Int!
+      rideHeightRF: Int!
+      rideHeightLR: Int!
+      rideHeightRR: Int!
+      camberLF: Int!
+      camberRF: Int!
+      camberLR: Int!
+      camberRR: Int!
+      toeLF: Int!
+      toeRF: Int!
+      toeLR: Int!
+      toeRR: Int!
+    ): Sheet
   }
 `;
 

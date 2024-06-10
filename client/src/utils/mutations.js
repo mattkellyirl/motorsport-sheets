@@ -54,8 +54,8 @@ export const ADD_CAR = gql`
 `;
 
 export const DELETE_CAR = gql`
-  mutation deleteCar($id: ID!) {
-    deleteCar(id: $id) {
+  mutation deleteCar($_id: ID!) {
+    deleteCar(_id: $_id) {
       _id
       make
       model
@@ -100,8 +100,8 @@ export const ADD_EVENT = gql`
 `;
 
 export const DELETE_EVENT = gql`
-  mutation deleteEvent($id: ID!) {
-    deleteEvent(id: $id) {
+  mutation deleteEvent($_id: ID!) {
+    deleteEvent(_id: $_id) {
       _id
       type
       championship
@@ -200,8 +200,8 @@ export const ADD_SHEET = gql`
 `;
 
 export const DELETE_SHEET = gql`
-  mutation deleteSheet($id: ID!) {
-    deleteSheet(id: $id) {
+  mutation deleteSheet($_id: ID!) {
+    deleteSheet(_id: $_id) {
       _id
       title
       event

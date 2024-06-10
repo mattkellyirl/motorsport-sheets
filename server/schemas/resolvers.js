@@ -32,19 +32,19 @@ const resolvers = {
       }
     },
     // Get User By ID
-    user: async (_, { id }) => {
+    user: async (_, { _id }) => {
       try {
-        const user = await User.findById(id);
+        const user = await User.findById(_id);
         if (!user) {
-          console.error(`Request Failed - User ${id} Not Found`);
-          throw new Error(`Request Failed - User ${id} Not Found`);
+          console.error(`Request Failed - User ${_id} Not Found`);
+          throw new Error(`Request Failed - User ${_id} Not Found`);
         } else {
-          console.log(`Request Successful - User ${id}:`, user);
+          console.log(`Request Successful - User ${_id}:`, user);
           return user;
         }
       } catch (error) {
-        console.error(`Request Failed - User ${id}:`, error.message);
-        throw new Error(`Request Failed - User ${id}`);
+        console.error(`Request Failed - User ${_id}:`, error.message);
+        throw new Error(`Request Failed - User ${_id}`);
       }
     },
     // Get All Cars
@@ -60,19 +60,19 @@ const resolvers = {
     },
 
     // Get Car By ID
-    car: async (_, { id }) => {
+    car: async (_, { _id }) => {
       try {
-        const car = await Car.findById(id).populate("owner");
+        const car = await Car.findById(_id).populate("owner");
         if (!car) {
-          console.error(`Request Failed - Car ${id} Not Found`);
-          throw new Error(`Request Failed - Car ${id} Not Found`);
+          console.error(`Request Failed - Car ${_id} Not Found`);
+          throw new Error(`Request Failed - Car ${_id} Not Found`);
         } else {
-          console.log(`Request Successful - Car ${id}:`, car);
+          console.log(`Request Successful - Car ${_id}:`, car);
           return car;
         }
       } catch (error) {
-        console.error(`Request Failed - Car ${id}`, error.message);
-        throw new Error(`Request Failed - Car ${id}`);
+        console.error(`Request Failed - Car ${_id}`, error.message);
+        throw new Error(`Request Failed - Car ${_id}`);
       }
     },
 
@@ -89,19 +89,19 @@ const resolvers = {
     },
 
     // Get Event By ID
-    event: async (_, { id }) => {
+    event: async (_, { _id }) => {
       try {
-        const event = await Event.findById(id).populate("owner");
+        const event = await Event.findById(_id).populate("owner");
         if (!event) {
-          console.error(`Request Failed - Event ${id} Not Found`);
-          throw new Error(`Request Failed - Event ${id} Not Found`);
+          console.error(`Request Failed - Event ${_id} Not Found`);
+          throw new Error(`Request Failed - Event ${_id} Not Found`);
         } else {
-          console.log(`Request Successful - Event ${id}:`, event);
+          console.log(`Request Successful - Event ${_id}:`, event);
           return event;
         }
       } catch (error) {
-        console.error(`Request Failed - Event ${id}`, error.message);
-        throw new Error(`Request Failed - Event ${id}`);
+        console.error(`Request Failed - Event ${_id}`, error.message);
+        throw new Error(`Request Failed - Event ${_id}`);
       }
     },
 
@@ -118,19 +118,19 @@ const resolvers = {
     },
 
     // Get Sheet By ID
-    sheet: async (_, { id }) => {
+    sheet: async (_, { _id }) => {
       try {
-        const sheet = await Sheet.findById(id).populate("owner");
+        const sheet = await Sheet.findById(_id).populate("owner");
         if (!sheet) {
-          console.error(`Request Failed - Sheet ${id} Not Found`);
-          throw new Error(`Request Failed - Sheet ${id} Not Found`);
+          console.error(`Request Failed - Sheet ${_id} Not Found`);
+          throw new Error(`Request Failed - Sheet ${_id} Not Found`);
         } else {
-          console.log(`Request Successful - Sheet ${id}:`, sheet);
+          console.log(`Request Successful - Sheet ${_id}:`, sheet);
           return sheet;
         }
       } catch (error) {
-        console.error(`Request Failed - Sheet ${id}`, error.message);
-        throw new Error(`Request Failed - Sheet ${id}`);
+        console.error(`Request Failed - Sheet ${_id}`, error.message);
+        throw new Error(`Request Failed - Sheet ${_id}`);
       }
     },
   },
@@ -224,12 +224,12 @@ const resolvers = {
     },
 
     // Delete Car
-    deleteCar: async (_, { id }, { user }) => {
+    deleteCar: async (_, { _id }, { user }) => {
       if (!user) {
         throw new AuthenticationError("User Not Logged In");
       } else {
         try {
-          const car = await Car.findByIdAndDelete(id);
+          const car = await Car.findByIdAndDelete(_id);
           if (!car) {
             throw new Error("Car not found");
           }
@@ -270,12 +270,12 @@ const resolvers = {
     },
 
     // Delete Event
-    deleteEvent: async (_, { id }, { user }) => {
+    deleteEvent: async (_, { _id }, { user }) => {
       if (!user) {
         throw new AuthenticationError("User Not Logged In");
       } else {
         try {
-          const event = await Event.findByIdAndDelete(id);
+          const event = await Event.findByIdAndDelete(_id);
           if (!event) {
             throw new Error("Event not found");
           }
@@ -358,12 +358,12 @@ const resolvers = {
     },
 
     // Delete Sheet
-    deleteSheet: async (_, { id }, { user }) => {
+    deleteSheet: async (_, { _id }, { user }) => {
       if (!user) {
         throw new AuthenticationError("User Not Logged In");
       } else {
         try {
-          const sheet = await Sheet.findByIdAndDelete(id);
+          const sheet = await Sheet.findByIdAndDelete(_id);
           if (!sheet) {
             throw new Error("Sheet not found");
           }

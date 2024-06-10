@@ -32,16 +32,14 @@ function DropdownMenu({ dataID, dataType, refetch }) {
   }
 
   // Initialise the deleteMutation function with the determined mutation and user variables
-  const [deleteData] = useMutation(deleteMutation, {
-    variables: { id: dataID },
-  });
+  const [deleteData] = useMutation(deleteMutation);
 
   // Handle data deletion and refetch data to update UI
   const handleDelete = async (event) => {
     event.preventDefault();
     console.log(`Deleting ${dataType} with ID: ${dataID}`);
     try {
-      await deleteData(); // Delete the data
+      await deleteData({ variables: { _id: dataID } });
       refetch(); // Refetch data to update UI after deletion
       console.log("Request Successful - Data Deleted");
     } catch (error) {

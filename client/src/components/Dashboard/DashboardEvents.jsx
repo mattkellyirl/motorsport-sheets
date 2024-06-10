@@ -9,13 +9,14 @@ function DashboardEvents() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState(null);
 
+  // Retrieve user profile
   useEffect(() => {
     const userProfile = AuthService.getProfile();
-    // console.log("User Profile:", userProfile);
     setUserId(userProfile.data._id);
   }, []);
 
-  const { data, refetch } = useQuery(GET_EVENTS, {
+  // Retrieve user event data
+  const { data: eventsData, refetch: refetchEvents } = useQuery(GET_EVENTS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
@@ -39,19 +40,19 @@ function DashboardEvents() {
               Add Event
             </button>
           </div>
-          {!data || data.events.length === 0 ? (
+          {!eventsData || eventsData.events.length === 0 ? (
             <p className="text-md font-normal text-black">
               You currently have no events.
             </p>
           ) : (
-            <EventListing events={data.events} />
+            <EventListing events={eventsData.events} refetch={refetchEvents} /> // Pass events to EventListing for rendering event data and refetch to handleDelete function
           )}
         </div>
       </div>
       <NewEventModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        refetch={refetch}
+        refetch={refetchEvents}
       />
     </div>
   );

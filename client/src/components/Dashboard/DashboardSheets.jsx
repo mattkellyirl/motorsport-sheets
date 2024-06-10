@@ -9,13 +9,14 @@ function DashboardSheets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userId, setUserId] = useState(null);
 
+  // Retrieve user profile
   useEffect(() => {
     const userProfile = AuthService.getProfile();
-    // console.log("User Profile:", userProfile);
     setUserId(userProfile.data._id);
   }, []);
 
-  const { data, refetch } = useQuery(GET_SHEETS, {
+  // Retrieve user sheet data
+  const { data: sheetsData, refetch: refetchSheets } = useQuery(GET_SHEETS, {
     variables: { ownerId: userId },
     skip: !userId,
   });
@@ -39,19 +40,19 @@ function DashboardSheets() {
               Add Sheet
             </button>
           </div>
-          {!data || data.sheets.length === 0 ? (
+          {!sheetsData || sheetsData.sheets.length === 0 ? (
             <p className="text-md font-normal text-black">
               You currently have no sheets.
             </p>
           ) : (
-            <SheetListing sheets={data.sheets} />
+            <SheetListing sheets={sheetsData.sheets} refetch={refetchSheets} /> // Pass sheets to SheetListing for rendering sheet data and refetch to handleDelete function
           )}
         </div>
       </div>
       <NewSheetModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        refetch={refetch}
+        refetch={refetchSheets}
       />
     </div>
   );

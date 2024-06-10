@@ -1,32 +1,15 @@
 import React from "react";
+import SheetDetails from "./ListingDetails/SheetDetails";
 
-function SheetListing({ sheets }) {
+function SheetListing({ sheets, refetch }) {
   return (
     <div className="flex flex-row flex-wrap">
       {sheets.map((sheet) => (
-        <a
+        <SheetDetails
           key={`${sheet.id}-${sheet.event}-${sheet.session}`} // Combined key of sheet.id, sheet.event, sheet.session, incase sheet.id has a duplicate
-          href="#"
-          className="block max-w-sm p-4 mr-4 mb-4 bg-white border border-gray-200 rounded shadow hover:bg-gray-100"
-        >
-          <h5 className="mb-2 text-lg font-bold tracking-tight text-black">
-            {sheet.title}
-          </h5>
-          <p className="font-normal text-black">
-            <span className="font-bold">Car:</span> {sheet.car}
-          </p>
-
-          <p className="font-normal text-black">
-            <span className="font-bold">Event:</span> {sheet.event}
-          </p>
-
-          <p className="font-normal text-black">
-            <span className="font-bold">Session:</span> {sheet.session}
-          </p>
-          <p className="font-normal text-black">
-            <span className="font-bold">Driver:</span> {sheet.driver}
-          </p>
-        </a>
+          sheet={sheet} // Pass sheet to sheetDetails for handleDelete function
+          refetch={refetch} // Pass refetch query to sheetDetails for handleDelete function
+        ></SheetDetails>
       ))}
     </div>
   );

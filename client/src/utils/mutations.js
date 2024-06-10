@@ -53,6 +53,23 @@ export const ADD_CAR = gql`
   }
 `;
 
+export const DELETE_CAR = gql`
+  mutation deleteCar($id: ID!) {
+    deleteCar(id: $id) {
+      _id
+      make
+      model
+      year
+      raceNumber
+      odometer
+      owner {
+        _id
+        email
+      }
+    }
+  }
+`;
+
 export const ADD_EVENT = gql`
   mutation addEvent(
     $type: String!
@@ -68,6 +85,23 @@ export const ADD_EVENT = gql`
       track: $track
       date: $date
     ) {
+      _id
+      type
+      championship
+      round
+      track
+      date
+      owner {
+        _id
+        email
+      }
+    }
+  }
+`;
+
+export const DELETE_EVENT = gql`
+  mutation deleteEvent($id: ID!) {
+    deleteEvent(id: $id) {
       _id
       type
       championship
@@ -133,6 +167,41 @@ export const ADD_SHEET = gql`
       toeLR: $toeLR
       toeRR: $toeRR
     ) {
+      _id
+      title
+      event
+      session
+      trackCondition
+      trackTemp
+      car
+      driver
+      tyrePressureLF
+      tyrePressureRF
+      tyrePressureLR
+      tyrePressureRR
+      rideHeightLF
+      rideHeightRF
+      rideHeightLR
+      rideHeightRR
+      camberLF
+      camberRF
+      camberLR
+      camberRR
+      toeLF
+      toeRF
+      toeLR
+      toeRR
+      owner {
+        _id
+        email
+      }
+    }
+  }
+`;
+
+export const DELETE_SHEET = gql`
+  mutation deleteSheet($id: ID!) {
+    deleteSheet(id: $id) {
       _id
       title
       event

@@ -74,10 +74,7 @@ The main section of your dashboard will automatically update with any new cars, 
 
 ![UpdatedDashboard](/assets/readme/images/10.png)
 
-**_Please note: This is an early development version of Motorsport Sheets - there is currently no functionality in place to modify, delete or view complete data. However, this is an example of how data is structured in the database:_**
-
-![DB_1](/assets/readme/images/11.png)
-![DB_2](/assets/readme/images/12.png)
+**_Please note: This is an early development version of Motorsport Sheets - there is currently no functionality in place to edit or view complete data._**
 
 ## Contribution Guidelines
 

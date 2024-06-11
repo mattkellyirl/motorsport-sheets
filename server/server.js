@@ -19,7 +19,7 @@ const server = new ApolloServer({
 // Define CORS origin URL from environment variables
 const corsOrigin =
   process.env.NODE_ENV === "production"
-    ? "https://motorsport-sheets-6b6724ad9a1f.herokuapp.com/"
+    ? "https://motorsport-sheets-99499d8f02f1.herokuapp.com/"
     : "http://localhost:5173";
 
 // Apply CORS middleware with corsOrigin URL

@@ -12,8 +12,6 @@ Additionally, this application uses GraphQL, a powerful query language that enab
 
 To use Motorport Sheets, navigate to this [link](https://motorsport-sheets-99499d8f02f1.herokuapp.com/).
 
-Motorsport Sheets is also available on Render, via this [link](https://motorsport-sheets.onrender.com/).
-
 View a video demo of Motorsport Sheets, via this [link](https://www.youtube.com/watch?v=TwBeylH2UUo).
 
 ## Table of Contents

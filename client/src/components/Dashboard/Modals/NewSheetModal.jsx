@@ -43,7 +43,6 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
   // Extract the userProfile from AuthService, and setUserId to userProfile.data._id
   useEffect(() => {
     const userProfile = AuthService.getProfile();
-    // console.log("User Profile:", userProfile);
     setUserId(userProfile.data._id);
   }, []);
 
@@ -235,7 +234,7 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
                           </option>
 
                           {eventsData.events.map((event) => (
-                            <option key={`${event.id}-${event.date}`}>
+                            <option key={`${event._id}-${event.date}`}>
                               {event.championship
                                 ? `${event.championship} Round ${event.round}`
                                 : `${event.type} at ${event.track}`}
@@ -348,8 +347,8 @@ function NewSheetModal({ isOpen, onClose, refetch }) {
 
                           {carsData.cars.map((car) => (
                             <option
-                              key={`${car.id}-${car.raceNumber}`}
-                              value={car.id}
+                              key={`${car._id}-${car.raceNumber}`}
+                              value={`${car.make} ${car.model}`}
                             >
                               {car.make} {car.model}
                             </option>

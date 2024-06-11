@@ -6,7 +6,7 @@ function SheetListing({ sheets, refetch }) {
     <div className="flex flex-row flex-wrap">
       {sheets.map((sheet) => (
         <SheetDetails
-          key={`${sheet._id}-${sheet.event}-${sheet.session}`} // Combined key of sheet.id, sheet.event, sheet.session, incase sheet.id has a duplicate
+          key={`${sheet._id}-${sheet.event}-${sheet.session}`} // Combined key of sheet._id, sheet.event, sheet.session, incase sheet._id has a duplicate
           sheet={sheet} // Pass sheet to sheetDetails for handleDelete function
           refetch={refetch} // Pass refetch query to sheetDetails for handleDelete function
         ></SheetDetails>

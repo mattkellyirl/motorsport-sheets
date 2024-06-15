@@ -5,7 +5,7 @@ import logo from "../../../assets/motorsport-sheets.png";
 
 function Navbar() {
   return (
-    <nav className="static md:fixed md:top-0 md:left-0 md:w-full md:z-50 bg-white md:bg-opacity-90">
+    <nav className="static hidden md:block md:fixed md:top-0 md:left-0 md:w-full md:z-50 bg-white md:bg-opacity-90">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-center md:justify-between mx-auto px-4 py-4">
         {/* Logo */}
         <Link to="/">

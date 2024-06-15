@@ -12,7 +12,7 @@ function Hero() {
       />
       <div className="relative z-10 bg-zinc-900 bg-opacity-75 w-full h-full flex items-center justify-center">
         <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+          <h1 className="mb-4 text-5xl font-extrabold tracking-tight leading-none text-white lg:text-6xl">
             Streamline Your Racing Data
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">

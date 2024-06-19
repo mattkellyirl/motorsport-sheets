@@ -1,8 +1,25 @@
 import React from "react";
 import AuthService from "../../utils/authService";
 import { Link, useNavigate } from "react-router-dom";
-import { BiSolidSpreadsheet, BiSolidCar } from "react-icons/bi";
-import { MdSpaceDashboard, MdEventNote, MdLogout } from "react-icons/md";
+
+import { RiArrowDropDownLine } from "react-icons/ri";
+
+import {
+  BiSolidSpreadsheet,
+  BiSpreadsheet,
+  BiSolidCar,
+  BiSolidTimer,
+} from "react-icons/bi";
+import {
+  MdSpaceDashboard,
+  MdEventNote,
+  MdLogout,
+  MdOutlineTimer,
+  MdSportsMotorsports,
+} from "react-icons/md";
+import { FaFlagCheckered, FaCarSide } from "react-icons/fa6";
+import { TbListCheck } from "react-icons/tb";
+
 import logo from "../../../assets/motorsport-sheets.png";
 
 function DashboardNav() {
@@ -51,12 +68,33 @@ function DashboardNav() {
       >
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100">
           <Link to="/dashboard">
-            <div className="flex justify-center pl-2.5 mb-5">
+            <div className="flex justify-center pl-2.5 mb-4">
               <img src={logo} alt="Motorsport Sheets" className="h-12" />
             </div>
           </Link>
 
-          <ul className="space-y-2 font-semibold">
+          <ul className="mt-4 space-y-2 font-medium">
+            {/* User Profile */}
+            <button className="pl-2 py-2 rounded-lg flex items-center justify-between w-full hover:bg-gray-200 group">
+              <div className="flex flex-row items-center">
+                <img
+                  class="w-8 h-8 mr-2 rounded-full"
+                  src="https://media.licdn.com/dms/image/D5603AQEYAfZt7WFN0Q/profile-displayphoto-shrink_800_800/0/1696734857420?e=1724284800&v=beta&t=l1xfuvNbIZfPvXx2To3DHBpifYtmlZ_UInaAt-sWyj4"
+                  alt="User Profile Picture"
+                ></img>
+
+                <div className="flex flex-col items-start">
+                  <p className="text-black font-medium text-sm">Matt Kelly</p>
+                  <p className="text-gray-500 text-xs">
+                    matt@autosportindex.com
+                  </p>
+                </div>
+              </div>
+
+              <RiArrowDropDownLine className="w-8 h-8" />
+            </button>
+
+            {/* Dashboard */}
             <li>
               <Link
                 to="/dashboard"
@@ -66,13 +104,26 @@ function DashboardNav() {
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
+
+            <hr></hr>
+
+            {/* Driver, Car and Event Setup */}
+            <li>
+              <Link
+                to="/dashboard/drivers"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <MdSportsMotorsports className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Drivers</span>
+              </Link>
+            </li>
             <li>
               <Link
                 to="/dashboard/cars"
                 className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
-                <BiSolidCar className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
-                <span className="ml-3">Your Cars</span>
+                <FaCarSide className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Cars</span>
               </Link>
             </li>
             <li>
@@ -81,7 +132,20 @@ function DashboardNav() {
                 className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
                 <MdEventNote className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
-                <span className="ml-3">Your Events</span>
+                <span className="ml-3">Events</span>
+              </Link>
+            </li>
+
+            <hr></hr>
+
+            {/* Sheets */}
+            <li>
+              <Link
+                to="/dashboard/run-sheets"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <BiSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Run Sheets</span>
               </Link>
             </li>
             <li>
@@ -90,11 +154,59 @@ function DashboardNav() {
                 className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
               >
                 <BiSolidSpreadsheet className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
-                <span className="ml-3">Your Sheets</span>
+                <span className="ml-3">Setup Sheets</span>
               </Link>
             </li>
-          </ul>
-          <ul className="pt-4 mt-4 space-y-2 font-semibold border-t border-gray-200">
+            <li>
+              <Link
+                to="/dashboard/check-sheets"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <TbListCheck className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Check Sheets</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/lap-sheets"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <MdOutlineTimer className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Lap Sheets</span>
+              </Link>
+            </li>
+
+            <hr></hr>
+
+            {/* Driver Tools */}
+            <li>
+              <Link
+                to="/dashboard/maps"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <FaFlagCheckered className="w-5 h-4 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Track Maps</span>
+                <span className="ml-auto px-2 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+                  Pro
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/dashboard/reaction-test"
+                className="flex items-center p-2 text-black rounded-lg hover:bg-gray-200 group"
+              >
+                <BiSolidTimer className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-black" />
+                <span className="ml-3">Reaction Test</span>
+                <span className="ml-auto px-2 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
+                  Pro
+                </span>
+              </Link>
+            </li>
+
+            <hr></hr>
+
+            {/* Logout */}
             <li>
               <button
                 onClick={handleUserLogout}

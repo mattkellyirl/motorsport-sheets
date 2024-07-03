@@ -10,6 +10,7 @@ import DashboardMain from "./components/Dashboard/DashboardMain";
 import DashboardSheets from "./components/Dashboard/DashboardSheets";
 import DashboardEvents from "./components/Dashboard/DashboardEvents";
 import DashboardCars from "./components/Dashboard/DashboardCars";
+import DashboardDrivers from "./components/Dashboard/DashboardDrivers";
 
 import "./index.css";
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
           {
             path: "cars",
             element: <DashboardCars />,
+          },
+          {
+            path: "drivers",
+            element: <DashboardDrivers />,
           },
         ],
       },
